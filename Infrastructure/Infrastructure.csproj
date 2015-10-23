@@ -54,9 +54,14 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\CategoryDetail.cs" />
-    <Compile Include="Migrations\201510140846373_conglh.cs" />
-    <Compile Include="Migrations\201510140846373_conglh.Designer.cs">
-      <DependentUpon>201510140846373_conglh.cs</DependentUpon>
+    <Compile Include="Domain\Photos.cs" />
+    <Compile Include="Domain\Posts.cs" />
+    <Compile Include="Domain\Region.cs" />
+    <Compile Include="Domain\Users.cs" />
+    <Compile Include="Enum\Enums.cs" />
+    <Compile Include="Migrations\201510170637139_data.cs" />
+    <Compile Include="Migrations\201510170637139_data.Designer.cs">
+      <DependentUpon>201510170637139_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,17 +71,20 @@
     <Compile Include="Services\CategoryDetailService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\Interface\IServices.cs" />
+    <Compile Include="Services\PostService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510140846373_conglh.resx">
-      <DependentUpon>201510140846373_conglh.cs</DependentUpon>
+    <Folder Include="Constants\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510170637139_data.resx">
+      <DependentUpon>201510170637139_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

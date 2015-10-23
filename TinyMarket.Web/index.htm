@@ -7,23 +7,27 @@
     <title>AngularJs MultiSelect</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/custom-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/simple-sidebar.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="highlight/styles/github.css">
     <link rel="stylesheet" href="css/isteven-multi-select.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Slab:400,700' type='text/css'>
+    <link href="css/custom.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.Scripts/app/js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="Scripts/app/js/libs/jquery.min.js"></script>
-    <script src="Scripts/app/js/libs/bootstrap.min.js"></script>
+
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="highlight/highlight.pack.js"></script>
-    <script src="Scripts/app/js/libs/angular.min.js"></script>
-    <script src="Scripts/app/js/libs/angular-route.min.js"></script>
     <script src="Scripts/app/js/libs/isteven-multi-select.js"></script>
     <script src="Scripts/app/js/libs/paypal-button.min.js"></script>
     <script src="Scripts/app/js/app.js"></script>
@@ -37,6 +41,14 @@
     <script src="Scripts/app/js/controllers/demo-single-selection-mode.js"></script>
     <script src="Scripts/app/js/controllers/demo-custom.js"></script>
     <script src="Scripts/app/js/services/demo-custom-service.js"></script>
+    <script src="Scripts/app/js/libs/common-logic-code.js"></script>
+    <script src="Scripts/app/js/controllers/new-post.js"></script>
+    <script src="Scripts/app/js/libs/sx-wizard.js"></script>
+    <script src="Scripts/app/js/libs/sx-wizard-tpls.js"></script>
+    <script src="Scripts/app/js/libs/step-05-custmize-nav.js"></script>
+    
+    
+    
     <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
@@ -64,7 +76,7 @@
                     Demo:
                 </li>
                 <li class="subMenu">
-                    <a href="#/demo-minimum">Minimum</a>
+                    <a href="#/new-post">New Post</a>
                 </li>
                 <li class="subMenu">
                     <a href="#/demo-horizontal-layout">Horizontal Layout</a>

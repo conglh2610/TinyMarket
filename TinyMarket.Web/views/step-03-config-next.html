@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p>You can specify which step will be navigated when user clicks "Next" button in your step's controller.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="skipTemplateStep"> Skip next step: Specify step layout in template.
+          </label>
+          <p class="help-block">Check this box on and press "Next" you will skip the next step.</p>
+          <p class="help-block">Note the the "Previous" button is smart enough to back to the previous step you visited.</p>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p>You can specify whether the "Finish" button should be shown.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="$context.navigation.showFinish"> Show finish button in this step.
+          </label>
+          <p class="help-block">Check this box on you will see "Finish" button.</p>
+          <p class="help-block">Wizard will show "Finish" button on its last step even though you spcified not to show.</p>
+        </div>
+    </div>
+</div>
+

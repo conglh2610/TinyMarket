@@ -2,7 +2,9 @@
 
 var myApp = angular.module( 'myApp' , [ 
     'ngRoute',
-    'isteven-multi-select'
+    'ui.bootstrap',
+    'sx.wizard',
+    'isteven-multi-select',
 ])
 .config([ '$routeProvider', function( $routeProvider ) {          
 
@@ -19,9 +21,9 @@ var myApp = angular.module( 'myApp' , [
         templateUrl: 'views/configs-options.htm', 
     });        
 
-    $routeProvider.when( '/demo-minimum' , {
-        templateUrl: 'views/demo-minimum.htm', 
-        controller: 'demoMinimum'
+    $routeProvider.when( '/new-post' , {
+        templateUrl: 'views/new-post.html', 
+        controller: 'newPost'
     });        
 
     $routeProvider.when( '/demo-horizontal-layout' , {

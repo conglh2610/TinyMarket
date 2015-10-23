@@ -1,0 +1,62 @@
+<p>
+  You can update data (add, remove or change properties) in each steps.
+</p>
+<p>
+  It support defines logic for data loading when step entered, as well as validation when leaving.
+  Both are in standard JavaScript callback-style.
+</p>
+
+<form novalidate name="basicInfoForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" ng-model="$context.data.username" required>
+    <p class="help-block">Update exising property.</p>
+    <p ng-show="basicInfoForm.$submitted" class="text-danger">
+      <span ng-show="basicInfoForm.username.$error.required">This field is required.</span>
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" ng-model="$context.data.email" required email>
+    <p class="help-block">Update exising property.</p>
+    <p ng-show="basicInfoForm.$submitted" class="text-danger">
+      <span ng-show="basicInfoForm.email.$error.required">This field is required.</span>
+      <span ng-show="basicInfoForm.email.$error.email">This field must be in email format.</span>
+    </p>
+  </div>
+  <hr>
+  <div class="form-group"> 
+    <label for="firstName">First name</label>
+    <input type="text" class="form-control" id="firstName" name="firstName" ng-model="$context.data.name.firstName">
+    <p class="help-block">Specify new property.</p>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input type="text" class="form-control" id="lastName" name="lastName" ng-model="$context.data.name.lastName" required>
+    <p class="help-block">Specify new property.</p>
+    <p ng-show="basicInfoForm.$submitted" class="text-danger">
+      <span ng-show="basicInfoForm.lastName.$error.required">This field is required.</span>
+    </p>
+  </div>
+  <hr>
+  <div class="form-group">
+    <label>Gender</label>
+    <select class="form-control" name="gender" ng-model="$context.data.gender" required>
+      <option ng-repeat="gender in genders" value="{{gender}}">{{gender}}</option>
+    </select>
+    <p class="help-block">Async load options when entered (use <code>$timeout</code> to simulation.</p>
+    <p ng-show="basicInfoForm.$submitted" class="text-danger">
+      <span ng-show="basicInfoForm.gender.$error.required">This field is required.</span>
+    </p>
+  </div>
+  <div class="form-group">
+    <label>Country</label>
+    <select class="form-control" name="country" ng-model="$context.data.contry" required>
+      <option ng-repeat="contry in countries" value="{{contry}}">{{contry}}</option>
+    </select>
+    <p class="help-block">Async load options when entered (use <code>$timeout</code> to simulation.</p>
+    <p ng-show="basicInfoForm.$submitted" class="text-danger">
+      <span ng-show="basicInfoForm.country.$error.required">This field is required.</span>
+    </p>
+  </div>
+</form>

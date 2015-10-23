@@ -16,7 +16,10 @@ namespace Infrastructure.Repository
         }
 
         public IDbSet<Category> Categories { get; set; }
-        public IDbSet<CategoryDetail> CategoriesDetail { get; set; }
+        public IDbSet<Posts> Posts { get; set; }
+        public IDbSet<Users> Users { get; set; }
+        public IDbSet<Photos> Photos { get; set; }
+        public IDbSet<Region> Regions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

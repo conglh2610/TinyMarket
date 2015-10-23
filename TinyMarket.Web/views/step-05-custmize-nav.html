@@ -1,0 +1,16 @@
+<p>You can specify more buttons in the navigation in your step's controller.</p>
+<p>Below we have 3 buttons</p>
+<ul>
+  <li>The first one will navigate to the welcome step (first step).</li>
+  <li>The second one will navigate to the summary step (last step).</li>
+  <li>The thrid one is dynamical, it will navigate to the step you selected.</li>
+</ul>
+<p>Also note that the controller of this step was defined in a separeated file with the controller name specified.</p>
+
+<div class="form-group">
+  <label>3rd buttons targeting step</label>
+  <select class="form-control" name="targetStepId" ng-model="targetStepId">
+    <option ng-repeat="step in steps" value="{{step.id}}">{{step.title}}</option>
+  </select>
+  <p class="help-block">Select one step and click "Go Dynamic" button in navigation will lead you to that step.</p>
+</div>

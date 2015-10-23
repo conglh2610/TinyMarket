@@ -70,6 +70,7 @@ namespace TinyMarket.Web.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind<ICategoryService>().To<CategoryService>();
             kernel.Bind<ICategoryDetailService>().To<CategoryDetailService>();
+            kernel.Bind<IPostService>().To<PostService>();
         }        
     }
 }
