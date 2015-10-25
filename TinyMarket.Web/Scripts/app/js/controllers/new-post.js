@@ -3,12 +3,18 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', '$interval', '$wizard', 
 
     $scope.data = {
         username: 'shaun',
-        email: 'jfarrio@gmail.com'
+        email: 'jfarrio@gmail.com',
+        region: [{ id: 1, name: 'Đà Nẵng' },
+            { id: 1, name: 'Huế' },
+            { id: 1, name: 'Hà Nội' },
+            { id: 1, name: 'tp Hồ Chí Minh' },
+            { id: 1, name: 'Cần Thơ' }
+        ]
     };
 
     $scope.config = {
         size: 'lg',
-        title: 'Wizard - by Shaun\'s Angular Toolkits',
+        title: 'Tạo thông tin rao vặt',
         shadow: true,
         passthrough: false
     };
@@ -24,14 +30,36 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', '$interval', '$wizard', 
             }
         })
         .addStep({
+            index: 1,
             id: 'step-1-welcome',
-            title: 'Welcome',
-            templateUrl: 'views/step-01-welcome.html'
+            title: 'Tạo tin',
+            templateUrl: 'views/step-01-information.html',
+            controller: function ($scope, $timeout) {
+                //$scope.$context.behavior.entering = function (options, callback) {
+                //    $scope.basicInfoForm.$setPristine();
+                //    if (options.entered) {
+                //        debugger;
+                //    } else {
+                //        debugger;
+                //    }
+                //};
+                $scope.$context.behavior.leaving = function (options, callback) {
+                    if (options.forward) {
+                        $timeout(function () {
+                            $scope.informationForm.$setSubmitted();
+                            return callback($scope.informationForm.$valid);
+                        }, 2000);
+                    } else {
+                        return callback(true);
+                    }
+                };
+            }
         })
         .addStep({
+            index: 2,
             id: 'step-2-update-data',
-            title: 'Update data, entering and validating',
-            templateUrl: 'views/step-02-update-data.html',
+            title: 'Xác nhận',
+            templateUrl: 'views/step-02-confirm.html',
             controller: function ($scope, $timeout) {
                 $scope.$context.behavior.entering = function (options, callback) {
                     $scope.basicInfoForm.$setPristine();
@@ -58,34 +86,12 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', '$interval', '$wizard', 
             }
         })
         .addStep({
-            id: 'step-3-config-next',
-            title: 'Configure the "Next" button behavior',
-            templateUrl: 'views/step-03-config-next.html',
-            controller: function ($scope) {
-                $scope.skipTemplateStep = false;
-
-                $scope.$watch('skipTemplateStep', function (skipTemplateStep) {
-                    $scope.$context.navigation.nextStepId = skipTemplateStep ? 'step-6-summary' : null;
-                });
-            }
-        })
-        .addStep({
-            id: 'step-4-step-template',
-            title: 'Specify step layout with inline HTML',
-            template: '<p>Besides <code>templateUrl</code> you can specify step\'s layout by using inline HTML with <code>template</code>.</p>'
-        })
-        .addStep({
+            index: 3,
             id: 'step-5-customize-navigation',
-            title: 'Customize navigation buttions',
+            title: 'Hoàn tất',
             templateUrl: 'views/step-05-custmize-nav.html',
             controller: 'wizardStepCustmizeNavCtrl'
-        })
-        .addStep({
-            id: 'step-6-summary',
-            title: 'Summary',
-            templateUrl: 'views/step-06-summary.html'
         });
-
     $scope.launch = function () {
         wizard.open(
             $scope.data,

@@ -239,7 +239,6 @@
     <Content Include="Scripts\app\js\libs\sx-wizard-tpls.js" />
     <Content Include="Scripts\app\js\libs\sx-wizard.js" />
     <Content Include="Scripts\app\js\libs\ui-bootstrap-tpls-0.12.0.min.js" />
-    <Content Include="Scripts\app\js\libs\wizard.js" />
     <Content Include="Scripts\app\js\services\demo-custom-service.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1010,8 +1009,8 @@
     <Content Include="views\mit-license.htm" />
     <Content Include="views\new-post.html" />
     <Content Include="views\other-cool-stuffs.htm" />
-    <Content Include="views\step-01-welcome.html" />
-    <Content Include="views\step-02-update-data.html" />
+    <Content Include="views\step-01-information.html" />
+    <Content Include="views\step-02-confirm.html" />
     <Content Include="views\step-03-config-next.html" />
     <Content Include="views\step-05-custmize-nav.html" />
     <Content Include="views\step-06-summary.html" />

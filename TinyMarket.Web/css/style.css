@@ -180,3 +180,7 @@ div.fauxCode + p,
     top: 17px;
     right: 10px;
 }
+
+.steps ul li{
+    list-style-type:none;
+}

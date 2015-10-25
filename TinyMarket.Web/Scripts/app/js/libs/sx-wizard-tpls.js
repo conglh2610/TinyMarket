@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
     'use strict';
 
     var module = window.angular.module('sx.wizard.tpls', []);
@@ -16,13 +16,7 @@
                 '    </button>' +
                 '    <h3 class="modal-title">{{_title}}</h3>' +
 				'<div class="fuelux">' +
-					'<ul class="steps">' + 
-						'<li><span class="badge badge-info">1</span>Step 1<span class="chevron"></span></li>' + 
-						'<li><span class="badge">2</span>Step 2<span class="chevron"></span></li>' + 
-						'<li><span class="badge">3</span>Step 3<span class="chevron"></span></li>' + 
-						'<li><span class="badge">4</span>Step 4<span class="chevron"></span></li>' + 
-						'<li><span class="badge">5</span>Step 5<span class="chevron"></span></li>' + 
-					'</ul>' +
+
 				'</div>' +
                 '</div>' +
                 '<div class="modal-body">' +
@@ -57,21 +51,23 @@
                 '            ng-disabled="_entering || _leaving" ' +
                 '            ng-click="goById(button.stepFn(), false)">{{button.text}}</button>' +
                 '  </div>' +
-                '  <div class="btn-group">' +
-                '    <button class="btn btn-default" ' +
-                '            ng-disabled="_entering || _leaving || _history.length <= 0" ' +
-                '            ng-click="previous()">Previous</button>' +
-                '    <button class="btn btn-default"' +
-                '            ng-show="$stepsOrder.indexOf($current.step.id) < $stepsOrder.length - 1" ' +
-                '            ng-disabled="_entering || _leaving" ' +
-                '            ng-click="next()">Next</button>' +
-                '    <button class="btn btn-default" ' +
-                '            ng-show="_showFinishButton" ' +
-                '            ng-disabled="_entering || _leaving" ' +
-                '            ng-click="success()">Finish</button>' +
-                '    <button class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '  </div>' +
-                '</div>' +               
+                '     <divclass="row">' +
+                '       <div class="col-sm-12 text-right bottom-prev-next">' +
+                '           <button class="btn btn-primary btn-sm btn-prev pull-left" ' +
+                '                   ng-disabled="_entering || _leaving || _history.length <= 0" ' +
+                '                   ng-click="previous()">Trở về trang trước</button>' +
+                '           <button class="btn btn-primary btn-sm btn-next"' +
+                '                   ng-show="$stepsOrder.indexOf($current.step.id) < $stepsOrder.length - 1" ' +
+                '                   ng-disabled="_entering || _leaving" ' +
+                '                   ng-click="next()">tiếp tục</button>' +
+                '           <button class="btn btn-default" ' +
+                '                   ng-show="_showFinishButton" ' +
+                '                   ng-disabled="_entering || _leaving" ' +
+                '                   ng-click="success()">Finish</button>' +
+                '           <button class="btn btn-default" ng-click="cancel()">Hủy</button>' +
+                '       </div>' +
+                '      </div>' +
+                '</div>' +
                 '');
         }
     ]);
