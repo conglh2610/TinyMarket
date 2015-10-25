@@ -1,10 +1,10 @@
 ﻿//Service style, probably the simplest one
-myApp.service('categoryService', ['$http', '$q', function ($http, $q) {
-    var serviceBase = '/api/categorydetail';
+myApp.service('regionService', ['$http', '$q', function ($http, $q) {
+    var serviceBase = '/api/regions';
 
-    this.getAllCategories = function () {
+    this.getAllRegions = function () {
         var deferred = $q.defer();
-        $http.get(serviceBase + "/GetAllCategoryDetails").success(function (data, status, headers, config) {
+        $http.get(serviceBase + "/GetAllRegions").success(function (data, status, headers, config) {
 
             var results = [];
 

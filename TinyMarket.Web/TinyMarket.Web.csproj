@@ -215,6 +215,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\js\app.js" />
     <Content Include="Scripts\app\js\controllers\demo-callbacks.js" />
+    <Content Include="Scripts\app\js\controllers\region.js" />
     <Content Include="Scripts\app\js\controllers\demo-disabling-enabling.js" />
     <Content Include="Scripts\app\js\controllers\demo-dynamic-update.js" />
     <Content Include="Scripts\app\js\controllers\demo-custom.js" />
@@ -226,8 +227,11 @@
     <Content Include="Scripts\app\js\libs\angular-route.js" />
     <Content Include="Scripts\app\js\libs\angular-route.min.js" />
     <Content Include="Scripts\app\js\libs\angular-ui-bootstrap.js" />
+    <Content Include="Scripts\app\js\libs\angular-wysiwyg.js" />
+    <Content Include="Scripts\app\js\libs\angular-wysiwyg.min.js" />
     <Content Include="Scripts\app\js\libs\angular.js" />
     <Content Include="Scripts\app\js\libs\angular.min.js" />
+    <Content Include="Scripts\app\js\libs\bootstrap-colorpicker-module.js" />
     <Content Include="Scripts\app\js\libs\bootstrap.min.js" />
     <Content Include="Scripts\app\js\libs\common-logic-code.js" />
     <Content Include="Scripts\app\js\libs\helper.js" />
@@ -239,6 +243,7 @@
     <Content Include="Scripts\app\js\libs\sx-wizard-tpls.js" />
     <Content Include="Scripts\app\js\libs\sx-wizard.js" />
     <Content Include="Scripts\app\js\libs\ui-bootstrap-tpls-0.12.0.min.js" />
+    <Content Include="Scripts\app\js\services\region-service.js" />
     <Content Include="Scripts\app\js\services\demo-custom-service.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1023,6 +1028,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CategoryDetailController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

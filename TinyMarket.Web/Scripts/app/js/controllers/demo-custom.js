@@ -53,7 +53,7 @@ myApp.controller('demoCustom', ['$scope', 'categoryService', 'serviceCommon', fu
                   }
               );
 
-    $scope.webBrowsersGrouped1 = categoryService.getAllCategies().then(function (results) {
+    $scope.webBrowsersGrouped1 = categoryService.getAllCategories().then(function (results) {
         var dataSource = makingDatasourceForDataSeach(results.data);
         $scope.webBrowsersGrouped = dataSource;
     });

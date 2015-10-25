@@ -7457,3 +7457,14 @@ ol.a-carousel {
 .fuelux .step-content .active .btn-group .active {  display: inline-block;}
 .badge-info{background-color: #3A87AD;}
 .badge-success{background-color: #468847;}
+
+
+div[dropzone] {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold;
+    color: #bbb;
+    margin-bottom: 20px;
+}

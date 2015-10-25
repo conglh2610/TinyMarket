@@ -1,16 +1,34 @@
-﻿
-myApp.controller('newPost', ['$scope', 'serviceCommon', '$interval', '$wizard', function ($scope, serviceCommon, $interval, $wizard) {
+﻿myApp.controller('newPost', ['$scope', 'serviceCommon', 'regionService', 'categoryService', '$interval', '$wizard', function ($scope, serviceCommon, regionService, categoryService, $interval, $wizard) {
 
-    $scope.data = {
-        username: 'shaun',
-        email: 'jfarrio@gmail.com',
-        region: [{ id: 1, name: 'Đà Nẵng' },
-            { id: 1, name: 'Huế' },
-            { id: 1, name: 'Hà Nội' },
-            { id: 1, name: 'tp Hồ Chí Minh' },
-            { id: 1, name: 'Cần Thơ' }
-        ]
-    };
+    $scope.data = {};
+    regionService.getAllRegions().then(function (results) {
+        $scope.data.regionDataSource = results.data;
+    });
+
+
+    categoryService.getAllCategories().then(function (results) {
+        $scope.data.categoryDataSource = categoryAddAndDisableParent(results.data);
+    });
+
+     var categoryAddAndDisableParent = function (categoryData) {
+        var result = [];
+        var categoryId = 0;
+        for (var i = 0; i < categoryData.length; i++) {
+            if (categoryId != categoryData[i].CategoryId) {
+                var newParent = { Id: 0, Name: '--'+categoryData[i].Category.Name + '--', IsDisabled: true }
+                result.push(newParent);
+                categoryId = categoryData[i].CategoryId;
+            }
+
+            else {
+                var newChild = { Id: categoryData[i].Id, Name: categoryData[i].Name, IsDisabled: false }
+                result.push(newChild);
+            }
+        }
+
+        return result;
+    }
+
 
     $scope.config = {
         size: 'lg',
