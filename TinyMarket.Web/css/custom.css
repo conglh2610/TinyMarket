@@ -5221,14 +5221,14 @@ table.a-keyvalue td, table.a-keyvalue th {
     padding: 7px 14px 6px;
 }
 
-ul {
+/*ul {
     margin: 0 0 18px 18px;
     color: #949494;
-}
+}*/
 
-    ul li {
+    /*ul li {
         list-style: disc;
-    }
+    }*/
 
     ul ul li {
         list-style: circle;

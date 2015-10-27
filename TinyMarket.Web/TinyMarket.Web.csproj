@@ -129,6 +129,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\custom-style.css" />
     <Content Include="css\custom.css" />
+    <Content Include="css\drag-drop-style.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\isteven-multi-select.css" />
     <Content Include="css\simple-sidebar.css" />
@@ -238,7 +239,11 @@
     <Content Include="Scripts\app\js\libs\isteven-multi-select.js" />
     <Content Include="Scripts\app\js\libs\jquery-2.1.4.js" />
     <Content Include="Scripts\app\js\libs\jquery.min.js" />
+    <Content Include="Scripts\app\js\libs\ng-droplet.js" />
+    <Content Include="Scripts\app\js\libs\ng-droplet.min.js" />
+    <Content Include="Scripts\app\js\libs\ngDroplet.js" />
     <Content Include="Scripts\app\js\libs\paypal-button.min.js" />
+    <Content Include="Scripts\app\js\libs\progressbar.js" />
     <Content Include="Scripts\app\js\libs\step-05-custmize-nav.js" />
     <Content Include="Scripts\app\js\libs\sx-wizard-tpls.js" />
     <Content Include="Scripts\app\js\libs\sx-wizard.js" />

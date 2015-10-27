@@ -5,6 +5,7 @@ var myApp = angular.module( 'myApp' , [
     'ui.bootstrap',
     'sx.wizard',
     'isteven-multi-select',
+    'ngDroplet'
 ])
 .config([ '$routeProvider', function( $routeProvider ) {          
 
