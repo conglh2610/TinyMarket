@@ -71,8 +71,8 @@
     <Compile Include="Services\CategoryDetailService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\Interface\IServices.cs" />
-    <Compile Include="Services\RegionService.cs" />
     <Compile Include="Services\PostService.cs" />
+    <Compile Include="Services\RegionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
