@@ -30,7 +30,7 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', 'regionService', 'catego
 
         $scope.interface = args;
         $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif', 'svg', 'torrent']);
-        $scope.interface.setRequestUrl('upload.html');
+        $scope.interface.setRequestUrl('api/posts/savepost');
         $scope.interface.defineHTTPSuccess([/2.{2}/]);
         $scope.interface.useArray(false);
 
@@ -41,7 +41,8 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', 'regionService', 'catego
 
         $scope.uploadCount = files.length;
         $scope.success = true;
-        console.log(response, files);
+        $scope.data.images = files;
+        //console.log(response, files);
 
         $timeout(function timeout() {
             $scope.success = false;

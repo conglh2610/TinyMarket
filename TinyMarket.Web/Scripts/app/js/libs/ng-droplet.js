@@ -858,6 +858,21 @@
 
                         },
 
+                        getFilesImage: function getFiles(type) {
+
+                            if (type) {
+
+                                // Apply any necessary filters if a bitwise value has been supplied.
+                                var filesFilter = $scope.filterFiles(type);
+                                return filesFilter;
+
+                            }
+
+                            // Otherwise we'll yield the entire set of files.
+                            return $scope.files;
+
+                        },
+
                         /**
                          * @method allowedExtensions
                          * @param extensions {Array}
