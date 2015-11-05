@@ -75,29 +75,23 @@ namespace TinyMarket.Web.Controllers
                 var provider = new MultipartMemoryStreamProvider();
                 await Request.Content.ReadAsMultipartAsync(provider);
 
-                Google.Apis.Drive.v2.Data.File body = new Google.Apis.Drive.v2.Data.File();
-                body.Title = "TinyMarket_Folder";
-                body.Description = "document description";
-                body.MimeType = "application/vnd.google-apps.folder";
+                string Q = "title = 'TinyMarket_Folder' and mimeType = 'application/vnd.google-apps.folder'";
+                IList<Google.Apis.Drive.v2.Data.File> _Files = GoogleApiHelper.GoogleApiHelper.GetFiles(service, Q);
+                // If there isn't a directory with this name lets create one.
+                if (_Files.Count == 0)
+                {
+                    _Files.Add(GoogleApiHelper.GoogleApiHelper.createDirectory(service, "TinyMarket_Folder", "TinyMarket_Folder", "root"));
+                }
 
-                GoogleApiHelper.GoogleApiHelper.UploadFile(service, "C:\\Users\\CongLH\\Desktop\\1445051059384_16690.jpg", "abc");
-                //foreach (var file in provider.Contents)
-                //{
-                //    GoogleApiHelper.GoogleApiHelper.UploadFile(service, "C:\\Users\\CongLH\\Desktop\\1445051059384_16690.jpg", "abc");
+                // We should have a directory now because we either had it to begin with or we just created one.
+                if (_Files.Count != 0)
+                {
 
-                //    var filename = file.Headers.ContentDisposition.FileName.Trim('\"');
-                //    var buffer = await file.ReadAsByteArrayAsync();
-                //    //Do whatever you want with filename and its binaray data.
-                //    MemoryStream stream = new MemoryStream(buffer);
+                    // This is the ID of the directory 
+                    string directoryId = _Files[0].Id;
 
-                //    body.Title = new Guid().ToString();
-                //    body.Description = filename;
-                //    var mimeType = "abc";
-
-                //    FilesResource.InsertMediaUpload requestDrive = service.Files.Insert(body, stream, mimeType);
-                //    requestDrive.Upload();
-                //    Google.Apis.Drive.v2.Data.File fileRespond = requestDrive.ResponseBody;
-                //}
+                    List<string> paths = GoogleApiHelper.GoogleApiHelper.UploadFileFromRequest(service, provider, directoryId);
+                }
 
             }
             catch (Exception e)

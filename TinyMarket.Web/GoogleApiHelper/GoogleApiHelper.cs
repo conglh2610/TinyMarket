@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
+using System.Net.Http.Headers;
 
 namespace TinyMarket.Web.GoogleApiHelper
 {
@@ -70,7 +72,7 @@ namespace TinyMarket.Web.GoogleApiHelper
             {
                 File body = new File();
                 body.Title = System.IO.Path.GetFileName(_uploadFile);
-                body.Description = "File uploaded by Diamto Drive Sample";
+                //body.Description = "File uploaded by Diamto Drive Sample";
                 body.MimeType = GetMimeType(_uploadFile);
                 body.Parents = new List<ParentReference>() { new ParentReference() { Id = _parent } };
 
@@ -96,6 +98,38 @@ namespace TinyMarket.Web.GoogleApiHelper
                 return null;
             }
 
+        }
+
+        public static List<string> UploadFileFromRequest(DriveService _service, MultipartMemoryStreamProvider provider, string _parent)
+        {
+            List<string> result = new List<string>();
+
+            foreach (var file in provider.Contents)
+            {
+                File body = new File();
+                body.Title = Guid.NewGuid().ToString();
+                body.Description = string.Format("TinyMarket_{0}", DateTime.Now.ToString("yyyyMMddhhMMss"));
+                body.MimeType = new MediaTypeHeaderValue("image/jpg").ToString();
+                body.Parents = new List<ParentReference>() { new ParentReference() { Id = _parent } };
+
+                var buffer = file.ReadAsByteArrayAsync().Result;
+                var stream = new System.IO.MemoryStream(buffer);
+
+                try
+                {
+                    FilesResource.InsertMediaUpload requestDrive = _service.Files.Insert(body, stream, new MediaTypeHeaderValue("image/jpg").ToString());
+                    requestDrive.Upload();
+                    result.Add(requestDrive.ResponseBody.OriginalFilename.ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: " + e.Message);
+                    return null;
+                }
+
+            }
+
+            return result;
         }
 
         /// <summary>
