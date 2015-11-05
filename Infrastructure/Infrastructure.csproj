@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant.cs" />
+    <Compile Include="Constants\Constans.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\CategoryDetail.cs" />
     <Compile Include="Domain\Photos.cs" />
@@ -78,9 +79,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201510170637139_data.resx">
       <DependentUpon>201510170637139_data.cs</DependentUpon>
