@@ -142,7 +142,7 @@ myApp.controller('newPost', ['$scope', 'serviceCommon', 'regionService', 'catego
             templateUrl: 'views/step-02-confirm.html',
             controller: function ($scope, $timeout) {
                 $scope.$context.behavior.entering = function (options, callback) {
-                    $scope.basicInfoForm.$setPristine();
+                    $scope.confirmForm.$setPristine();
                     if (options.entered) {
                         return callback();
                     } else {

@@ -1,4 +1,59 @@
-
-<form novalidate name="basicInfoForm">
-
+﻿<form name="confirmForm" novalidate>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Thông tin cá nhân
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label left" for="name">Tên</label>
+                    <div class="col-sm-6">
+                        <label class="control-label" for="name">{{$context.data.username}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label" for="name">Email</label>
+                    <div class="col-sm-6">
+                        <label class="control-label" for="name" ng-model="">{{$context.data.email}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label">Số điện thoại</label>
+                    <div class="col-sm-6">
+                        <label class="control-label" {{$context.data.phone}}></label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label">Hạng mục</label>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{$context.data.category.Name}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label" for="name">Vùng</label>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{$context.data.region.Name}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label" for="name">Tiêu đề</label>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{$context.data.title}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label" for="name">Nội dung</label>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{$context.data.Contain}}</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-sm-2 control-label" for="name">Hình ảnh</label>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{$context.data.Images}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

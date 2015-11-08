@@ -16,6 +16,7 @@ using System.Threading;
 using System.Web.Http;
 using Google.Apis;
 using System.IO;
+using System.Web;
 
 namespace TinyMarket.Web.Controllers
 {
@@ -38,7 +39,9 @@ namespace TinyMarket.Web.Controllers
         [HttpPost]
         public async System.Threading.Tasks.Task<HttpResponseMessage> SavePost()
         {
-
+            
+            string path = HttpContext.Current.Server.MapPath("~/"); ; 
+            List<Google.Apis.Drive.v2.Data.File> files = null;
             if (!Request.Content.IsMimeMultipartContent())
             {
                 return Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, "The request doesn't contain valid content!");
@@ -52,12 +55,14 @@ namespace TinyMarket.Web.Controllers
                     ClientSecret = Constants.CLIENT_SECRET
                 };
 
+                var fileDataStore = new FileDataStore(path + "Resources");
+                path = fileDataStore.FolderPath;
                 UserCredential credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                                             secrets,
                                             new[] { DriveService.Scope.Drive },
                                             "lhcongtk32@gmail.com",
-                                            CancellationToken.None,
-                                            new FileDataStore("Books.ListMyLibrary"));
+                                            CancellationToken.None, fileDataStore
+                                            );
 
                 var service = new DriveService(new BaseClientService.Initializer()
                 {
@@ -89,19 +94,22 @@ namespace TinyMarket.Web.Controllers
 
                     // This is the ID of the directory 
                     string directoryId = _Files[0].Id;
+                    //List<string> lst = new List<string> { "0B-xT1h5y02NaWGxsY09TLUhkZ2M" };
+                    //var a = GoogleApiHelper.GoogleApiHelper.GetFileInfos(service, lst, directoryId);
 
-                    List<string> paths = GoogleApiHelper.GoogleApiHelper.UploadFileFromRequest(service, provider, directoryId);
+                    files = GoogleApiHelper.GoogleApiHelper.UploadFileFromRequest(service, provider, directoryId);
+                    var list = service.Files.Get(files[0].Id);
+
                 }
 
             }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, path);
             }
-            return null;
+
+            return Request.CreateResponse(HttpStatusCode.OK, files);
         }
-
-
 
     }
 }

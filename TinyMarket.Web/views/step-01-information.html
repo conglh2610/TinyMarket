@@ -48,7 +48,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <div class="form-group clearfix" ng-class="{
-                    'has-error': informationForm.$submitted && informationForm.category.$invalid,
+                    <!--'has-error': informationForm.$submitted && informationForm.category.$invalid,
                     'has-success': informationForm.$submitted && informationForm.catrgory.$valid}">
                     <label class="col-sm-2 control-label" for="category">Hạng mục</label>
                     <div class="col-sm-6">
@@ -56,7 +56,8 @@
                                 ng-options="p.Id as p.Name for p in $context.data.categoryDataSource">
                             <option value=""><<--Chọn hạng mục-->></option>
                         </select>
-                    </div>
+                    </div>-->
+
                     <div class="col-sm-3">
 
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.category.$error.required">Chọn hạng mục cần đăng</div>
@@ -68,7 +69,7 @@
                     <label class="col-sm-2 control-label" for="region">Vùng</label>
                     <div class="col-sm-6">
                         <select class="form-control" name="region" ng-model="$context.data.region" required
-                                ng-options="p.Name for p in $context.data.regionDataSource">
+                                ng-options="p.Id as p.Name for p in $context.data.regionDataSource">
                             <option value=""><<--Chọn vùng-->></option>
                         </select>
                     </div>
@@ -97,20 +98,18 @@
                     </div>
                 </div>
                 <div class="form-group clearfix" ng-class="{
-                    'has-error': informationForm.$submitted && informationForm.areaContain.$invalid,
-                    'has-success': informationForm.$submitted && informationForm.areaContain.$valid}">
+                    'has-error': informationForm.$submitted && informationForm.Contain.$invalid,
+                    'has-success': informationForm.$submitted && informationForm.Contain.$valid}">
                     <label class="col-sm-2 control-label" for="name">Nội dung</label>
                     <div class="col-sm-6">
-                        <textarea name="areaContain" class="form-control" rows="10" ng-minlength="300" ng-maxlength="1000" placeholder="Điền nội dung ở đây ..."
-                                  ng-model="$context.data.contain" required></textarea>
+                        <textarea name="Contain" class="form-control" rows="10" ng-minlength="20" ng-maxlength="1000" placeholder="Điền nội dung ở đây ..."
+                                  ng-model="$context.data.Contain" required></textarea>
                     </div>
                     <div class="col-sm-3">
-                        <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.areaContain.$error.required">Bạn chưa điền nội dung</div>
+                        <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.Contain.$error.required">Bạn chưa điền nội dung</div>
                     </div>
                 </div>
-                <div class="form-group clearfix" ng-class="{
-                    'has-error': informationForm.$submitted && informationForm.areaContain.$invalid,
-                    'has-success': informationForm.$submitted && informationForm.areaContain.$valid}">
+                <div class="form-group clearfix">
                     <label class="col-sm-2 control-label" for="name">Hình ảnh</label>
                     <div class="col-sm-6">
                         <section class="background colourful"></section>
@@ -167,7 +166,7 @@
                         </section>
                     </div>
                     <div class="col-sm-3">
-                        <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.areaContain.$error.required">Bạn chưa điền nội dung</div>
+                        <!--<div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.Contain.$error.required">Bạn chưa điền nội dung</div>-->
                     </div>
                 </div>
             </div>

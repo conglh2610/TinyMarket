@@ -4,6 +4,7 @@ using System.Net.Http;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 using System.Net.Http.Headers;
+using TinyMarket.Web.Models;
 
 namespace TinyMarket.Web.GoogleApiHelper
 {
@@ -100,9 +101,9 @@ namespace TinyMarket.Web.GoogleApiHelper
 
         }
 
-        public static List<string> UploadFileFromRequest(DriveService _service, MultipartMemoryStreamProvider provider, string _parent)
+        public static List<File> UploadFileFromRequest(DriveService _service, MultipartMemoryStreamProvider provider, string _parent)
         {
-            List<string> result = new List<string>();
+            List<File> result = new List<File>();
 
             foreach (var file in provider.Contents)
             {
@@ -119,7 +120,7 @@ namespace TinyMarket.Web.GoogleApiHelper
                 {
                     FilesResource.InsertMediaUpload requestDrive = _service.Files.Insert(body, stream, new MediaTypeHeaderValue("image/jpg").ToString());
                     requestDrive.Upload();
-                    result.Add(requestDrive.ResponseBody.OriginalFilename.ToString());
+                    result.Add(requestDrive.ResponseBody);
                 }
                 catch (Exception e)
                 {
@@ -132,6 +133,25 @@ namespace TinyMarket.Web.GoogleApiHelper
             return result;
         }
 
+        public static List<FileInfo> GetFileInfos(DriveService _service, List<string> ids, string _parent)
+        {
+            var result = new List<FileInfo>();
+            try
+            {
+                foreach(string id in ids)
+                {
+                    var requestDrive = _service.Files.Get(id);
+                    result.Add(new FileInfo { Id = id, ImageFile = new File() });
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("An error occurred: " + e.Message);
+                return null;
+            }
+            return null;
+        }
         /// <summary>
         /// Updates a file
         /// Documentation: https://developers.google.com/drive/v2/reference/files/update
