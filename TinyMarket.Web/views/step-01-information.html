@@ -1,4 +1,4 @@
-﻿<form name="informationForm" novalidate>
+﻿<form name="informationForm" novalidate ng-controller="newPostController">
     <div class="panel panel-info">
         <div class="panel-heading">
             Điền thông tin cá nhân
@@ -53,7 +53,7 @@
                     <label class="col-sm-2 control-label" for="category">Hạng mục</label>
                     <div class="col-sm-6">
                         <select class="form-control" name="category" ng-model="$context.data.category" required
-                                ng-options="p.Id as p.Name for p in $context.data.categoryDataSource">
+                                ng-options="p.Id as p.Name for p in data.categoryDataSource">
                             <option value=""><<--Chọn hạng mục-->></option>
                         </select>
                     </div>
@@ -69,7 +69,7 @@
                     <label class="col-sm-2 control-label" for="region">Vùng</label>
                     <div class="col-sm-6">
                         <select class="form-control" name="region" ng-model="$context.data.region" required
-                                ng-options="p.Id as p.Name for p in $context.data.regionDataSource">
+                                ng-options="p.Id as p.Name for p in data.regionDataSource">
                             <option value=""><<--Chọn vùng-->></option>
                         </select>
                     </div>

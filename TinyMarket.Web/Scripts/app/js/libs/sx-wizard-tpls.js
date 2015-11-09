@@ -19,7 +19,7 @@
 
 				'</div>' +
                 '</div>' +
-                '<div class="modal-body">' +
+                '<div class="modal-body" style="padding-top: 0 !important">' +
                 '  <div ng-show="_shadow && (_entering || _leaving)" class="shadow">' +
                 '    <div class="outer">' +
                 '      <div class="middle text-info">' +
@@ -33,7 +33,6 @@
                 '      </div>' +
                 '    </div>' +
                 '  </div>' +
-                '  <div class="step-title">{{$current.step.title}}</div>' +
                 '  <div class="step-container" ' +
                 '       sx-wizard="$data" ' +
                 '       sx-wizard-steps="$steps" ' +
@@ -43,7 +42,6 @@
                 '       sx-wizard-hide-shadow="hideShadow()" ' +
                 '       sx-wizard-init="go(0, false)">' +
                 '  </div>' +
-                '</div>' +
                 '<div class="modal-footer">' +
                 '  <div class="btn-group pull-left">' +
                 '    <button class="btn btn-default" ' +

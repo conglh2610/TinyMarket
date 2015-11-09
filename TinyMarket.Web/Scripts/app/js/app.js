@@ -26,79 +26,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         controller: 'newPost'
     });        
 
-    $routeProvider.when( '/demo-horizontal-layout' , {
-        templateUrl: 'views/demo-horizontal-layout.htm', 
-        controller: 'demoHorizontalLayout'
-    });        
-
-    $routeProvider.when( '/demo-dynamic-update' , {
-        templateUrl: 'views/demo-dynamic-update.htm', 
-        controller: 'demoDynamicUpdate'
-    });        
-
-    $routeProvider.when( '/demo-disabling-enabling' , {
-        templateUrl: 'views/demo-disabling-enabling.htm', 
-        controller: 'demoDisablingEnabling'
-    });        
-
-    $routeProvider.when( '/demo-grouping' , {
-        templateUrl: 'views/demo-grouping.htm', 
-        controller: 'demoGrouping'
-    });
     $routeProvider.when('/demo-custom', {
         templateUrl: 'views/demo-custom.htm',
         controller: 'demoCustom'
     });
-
-    $routeProvider.when( '/demo-output-properties' , {
-        templateUrl: 'views/demo-output-properties.htm', 
-        controller: 'demoMinimum'
-    });        
-
-    $routeProvider.when( '/demo-helper-elements' , {
-        templateUrl: 'views/demo-helper-elements.htm', 
-        controller: 'demoMinimum'
-    });            
-
-    $routeProvider.when( '/demo-callbacks' , {
-        templateUrl: 'views/demo-callbacks.htm', 
-        controller: 'demoCallbacks'
-    });        
-
-    $routeProvider.when( '/demo-single-selection-mode' , {
-        templateUrl: 'views/demo-single-selection-mode.htm', 
-        controller: 'demoSingleSelectionMode'
-    });            
-
-    $routeProvider.when( '/dependency-compatibility' , {
-        templateUrl: 'views/dependency-compatibility.htm'
-    });
-
-    $routeProvider.when( '/issues-bug-reporting' , {
-        templateUrl: 'views/issues-bug-reporting.htm'
-    });
-
-    $routeProvider.when( '/contributing' , {
-        templateUrl: 'views/contributing.htm'
-    });
-    
-
-    $routeProvider.when( '/breaking-changes' , {
-        templateUrl: 'views/breaking-changes.htm'
-    });    
-    
-    $routeProvider.when( '/faq' , {
-        templateUrl: 'views/faq.htm'
-    });
-    
-    $routeProvider.when( '/mit-license' , {
-        templateUrl: 'views/mit-license.htm'
-    });
-
-    $routeProvider.when( '/other-cool-stuffs' , {
-        templateUrl: 'views/other-cool-stuffs.htm'
-    });
-    
 
     $routeProvider.otherwise( {
         redirectTo: '/main'
@@ -107,6 +38,8 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 myApp.controller('appController', ['$scope', '$wizard', function ($scope, $wizard) {
+
+
     $scope.config = {
         size: 'lg',
         title: 'Tạo thông tin rao vặt',
