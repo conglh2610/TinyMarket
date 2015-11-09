@@ -23,7 +23,6 @@ var myApp = angular.module( 'myApp' , [
     });        
 
     $routeProvider.when( '/new-post' , {
-        templateUrl: 'views/new-post.html', 
         controller: 'newPost'
     });        
 
