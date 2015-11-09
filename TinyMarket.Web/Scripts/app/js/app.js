@@ -6,8 +6,8 @@ var myApp = angular.module( 'myApp' , [
     'sx.wizard',
     'isteven-multi-select',
     'ngDroplet'
-])
-.config([ '$routeProvider', function( $routeProvider ) {          
+]);
+myApp.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.when( '/main' , {
         templateUrl: 'views/main.htm', 
