@@ -24,6 +24,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -190,7 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="css\bootstrap-cerulean.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\charisma-app.css" />
     <Content Include="css\custom-style.css" />
     <Content Include="css\custom.css" />
     <Content Include="css\drag-drop-style.css" />
@@ -1064,26 +1068,8 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="views\breaking-changes.htm" />
-    <Content Include="views\bug-reporting-contributing.htm" />
-    <Content Include="views\configs-options.htm" />
-    <Content Include="views\contributing.htm" />
-    <Content Include="views\demo-callbacks.htm" />
-    <Content Include="views\demo-disabling-enabling.htm" />
-    <Content Include="views\demo-dynamic-update.htm" />
     <Content Include="views\demo-custom.htm" />
-    <Content Include="views\demo-grouping.htm" />
-    <Content Include="views\demo-helper-elements.htm" />
-    <Content Include="views\demo-horizontal-layout.htm" />
-    <Content Include="views\demo-minimum.htm" />
-    <Content Include="views\demo-output-properties.htm" />
-    <Content Include="views\demo-single-selection-mode.htm" />
-    <Content Include="views\dependency-compatibility.htm" />
-    <Content Include="views\faq.htm" />
-    <Content Include="views\getting-started.htm" />
-    <Content Include="views\issues-bug-reporting.htm" />
     <Content Include="views\main.htm" />
-    <Content Include="views\mit-license.htm" />
     <Content Include="views\new-post.html" />
     <Content Include="views\other-cool-stuffs.htm" />
     <Content Include="views\step-01-information.html" />
@@ -1183,8 +1169,10 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
