@@ -10,6 +10,7 @@
     module.run(['$templateCache', '$wizardConsts',
         function($templateCache, $wizardConsts) {
             $templateCache.put($wizardConsts.template, '' +
+                '<div class="">' +
                 '<div class="modal-header">' +
                 '    <button type="button" class="close" ng-click="cancel()">' +
                 '        <span aria-hidden="true">&times;</span>' +
@@ -65,6 +66,7 @@
                 '           <button class="btn btn-default" ng-click="cancel()">Hủy</button>' +
                 '       </div>' +
                 '      </div>' +
+                '</div>' +
                 '</div>' +
                 '');
         }

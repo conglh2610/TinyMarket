@@ -284,6 +284,9 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\js\app.js" />
     <Content Include="Scripts\app\js\controllers\demo-callbacks.js" />
+    <Content Include="Scripts\app\js\controllers\new-post-finish.js" />
+    <Content Include="Scripts\app\js\controllers\new-post-confirm.js" />
+    <Content Include="Scripts\app\js\controllers\new-post-basic-info.js" />
     <Content Include="Scripts\app\js\controllers\region.js" />
     <Content Include="Scripts\app\js\controllers\demo-disabling-enabling.js" />
     <Content Include="Scripts\app\js\controllers\demo-dynamic-update.js" />
@@ -1074,9 +1077,7 @@
     <Content Include="views\other-cool-stuffs.htm" />
     <Content Include="views\step-01-information.html" />
     <Content Include="views\step-02-confirm.html" />
-    <Content Include="views\step-03-config-next.html" />
-    <Content Include="views\step-05-custmize-nav.html" />
-    <Content Include="views\step-06-summary.html" />
+    <Content Include="views\step-03-finish.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1162,6 +1163,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

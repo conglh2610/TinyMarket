@@ -37,8 +37,9 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-myApp.controller('appController', ['$scope', '$wizard', function ($scope, $wizard) {
-
+myApp.controller('appController', ['$scope', 'serviceCommon', 'regionService', 'categoryService', '$timeout', '$wizard',
+                          function ($scope, serviceCommon, regionService, categoryService, $timeout, $wizard)
+{
 
     $scope.config = {
         size: 'lg',
@@ -59,68 +60,28 @@ myApp.controller('appController', ['$scope', '$wizard', function ($scope, $wizar
         })
         .addStep({
             index: 1,
-            id: 'step-1-welcome',
+            id: 'step-1-infor',
             title: 'Tạo tin',
             templateUrl: 'views/step-01-information.html',
-            controller: function ($scope, $timeout) {
-                //$scope.$context.behavior.entering = function (options, callback) {
-                //    $scope.basicInfoForm.$setPristine();
-                //    if (options.entered) {
-                //        debugger;
-                //    } else {
-                //        debugger;
-                //    }
-                //};
-                $scope.$context.behavior.leaving = function (options, callback) {
-                    if (options.forward) {
-                        $timeout(function () {
-                            $scope.informationForm.$setSubmitted();
-                            return callback($scope.informationForm.$valid);
-                        }, 2000);
-                    } else {
-                        return callback(true);
-                    }
-                };
-            }
+            controller: 'newPostBasicInfo'
         })
         .addStep({
             index: 2,
-            id: 'step-2-update-data',
+            id: 'step-2-confirm',
             title: 'Xác nhận',
             templateUrl: 'views/step-02-confirm.html',
-            controller: function ($scope, $timeout) {
-                $scope.$context.behavior.entering = function (options, callback) {
-                    $scope.confirmForm.$setPristine();
-                    if (options.entered) {
-                        return callback();
-                    } else {
-                        $timeout(function () {
-                            $scope.genders = ['Male', 'Female'];
-                            $scope.countries = ['China', 'US', 'UK'];
-                            return callback();
-                        }, 2000);
-                    }
-                };
-                $scope.$context.behavior.leaving = function (options, callback) {
-                    if (options.forward) {
-                        $timeout(function () {
-                            $scope.basicInfoForm.$setSubmitted();
-                            return callback($scope.basicInfoForm.$valid);
-                        }, 2000);
-                    } else {
-                        return callback(true);
-                    }
-                };
-            }
+            controller: 'newPostConfirm'
         })
         .addStep({
             index: 3,
-            id: 'step-5-customize-navigation',
+            id: 'step-03-finish',
             title: 'Hoàn tất',
-            templateUrl: 'views/step-05-custmize-nav.html',
-            controller: 'wizardStepCustmizeNavCtrl'
+            templateUrl: 'views/step-03-finish.html',
+            controller: 'newPostFinish'
         });
     $scope.launch = function () {
+        getAllRegions();
+        getAllCategories();
         wizard.open(
             $scope.data,
             function (result) {
@@ -128,5 +89,79 @@ myApp.controller('appController', ['$scope', '$wizard', function ($scope, $wizar
             },
             window.angular.noop);
     };
+
+    $scope.data = {};
+    var getAllRegions = function () {
+        regionService.getAllRegions().then(function (results) {
+            $scope.data.regionDataSource = results.data;
+        });
+    }
+
+    var getAllCategories = function () {
+        categoryService.getAllCategories().then(function (results) {
+            $scope.data.categoryDataSource = categoryAddAndDisableParent(results.data);
+        });
+    }
+
+    getAllRegions();
+    getAllCategories();
+
+    var categoryAddAndDisableParent = function (categoryData) {
+        var result = [];
+        var categoryId = 0;
+        for (var i = 0; i < categoryData.length; i++) {
+            if (categoryId != categoryData[i].CategoryId) {
+                var newParent = { Id: 0, Name: '--' + categoryData[i].Category.Name + '--', IsDisabled: true }
+                result.push(newParent);
+                categoryId = categoryData[i].CategoryId;
+            }
+
+            else {
+                var newChild = { Id: categoryData[i].Id, Name: categoryData[i].Name, IsDisabled: false }
+                result.push(newChild);
+            }
+        }
+
+        return result;
+    }
+
+
+    $scope.interface = {};
+    $scope.uploadCount = 0;
+    $scope.success = false;
+    $scope.error = false;
+    $scope.$on('$dropletReady', function whenDropletReady(event, args) {
+
+        $scope.interface = args;
+        $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif', 'svg', 'torrent']);
+        $scope.interface.setRequestUrl('api/posts/savepost');
+        $scope.interface.defineHTTPSuccess([/2.{2}/]);
+        $scope.interface.useArray(false);
+
+    });
+
+    $scope.$on('$dropletSuccess', function onDropletSuccess(event, response, files) {
+
+        $scope.uploadCount = files.length;
+        $scope.success = true;
+        $scope.data.images = files;
+        console.log(response, files);
+
+        $timeout(function timeout() {
+            $scope.success = false;
+        }, 5000);
+
+    });
+
+    $scope.$on('$dropletError', function onDropletError(event, response) {
+
+        $scope.error = true;
+        console.log(response);
+
+        $timeout(function timeout() {
+            $scope.error = false;
+        }, 5000);
+
+    });
 }]);
 
