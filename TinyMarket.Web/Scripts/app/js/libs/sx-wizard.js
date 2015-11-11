@@ -185,6 +185,11 @@
                                             }
                                         };
 
+                                        $scope.post = function () {
+                                            /// need to implement post here /
+                                            $scope.next();
+                                        };
+
                                         $scope.next = function () {
                                             var nextStepId = $scope.$current.step.$context.navigation.nextStepId;
                                             if (nextStepId) {

@@ -50,20 +50,22 @@
                 '            ng-disabled="_entering || _leaving" ' +
                 '            ng-click="goById(button.stepFn(), false)">{{button.text}}</button>' +
                 '  </div>' +
-                '     <divclass="row">' +
+                '     <div class="row">' +
                 '       <div class="col-sm-12 text-right bottom-prev-next">' +
-                '           <button class="btn btn-primary btn-sm btn-prev pull-left" ' +
+                '           <button class="btn btn-primary btn-prev pull-left" ' +
                 '                   ng-disabled="_entering || _leaving || _history.length <= 0" ' +
                 '                   ng-click="previous()">Trở về trang trước</button>' +
-                '           <button class="btn btn-primary btn-sm btn-next"' +
-                '                   ng-show="$stepsOrder.indexOf($current.step.id) < $stepsOrder.length - 1" ' +
+                '           <button class="btn btn-primary btn-next"' +
+                '                   ng-show="$stepsOrder.indexOf($current.step.id) == 0" ' +
                 '                   ng-disabled="_entering || _leaving" ' +
-                '                   ng-click="next()">tiếp tục</button>' +
-                '           <button class="btn btn-default" ' +
-                '                   ng-show="_showFinishButton" ' +
+                '                   ng-click="next()">Tiếp tục</button>' +
+                '        <div class="btn-group pull-right theme-container animated tada">' + 
+                '           <button class=" btn btn-success" ' +
+                '                   ng-show="$stepsOrder.indexOf($current.step.id) == 1" ' +
                 '                   ng-disabled="_entering || _leaving" ' +
-                '                   ng-click="success()">Finish</button>' +
+                '                   ng-click="post()">Đăng bài</button>' +
                 '           <button class="btn btn-default" ng-click="cancel()">Hủy</button>' +
+                '        </div>' +
                 '       </div>' +
                 '      </div>' +
                 '</div>' +
