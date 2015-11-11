@@ -4,8 +4,7 @@
             return callback();
         } else {
             $timeout(function () {
-               
-
+                $scope.$context.data.radioModel = 'isSelling';
                 return callback();
             }, 5);
         }

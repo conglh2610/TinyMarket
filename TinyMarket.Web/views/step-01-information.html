@@ -76,12 +76,13 @@
                     </div>
                 </div>
                 <div class="form-group clearfix" ng-class="{
-                    'has-error': informationForm.$submitted && informationForm.postType.$invalid,
-                    'has-success': informationForm.$submitted && informationForm.postType.$valid}">
+                    'has-success': informationForm.$submitted}">
                     <label class="col-sm-2 control-label text-right" for="postType">Loại tin: </label>
                     <div class="btn-group col-sm-6">
-                        <label class="btn btn-primary" ng-model="$context.data.PostType" uib-btn-radio="'Left'">Cần bán</label>
-                        <label class="btn btn-primary" ng-model="$context.data.PostType" uib-btn-radio="'Right'">Cần mua</label>
+                        <div class="btn-group">
+                            <label class="btn btn-success" ng-model="$context.data.radioModel" uib-btn-radio="'isSelling'" uncheckable>Cần bán</label>
+                            <label class="btn btn-success" ng-model="$context.data.radioModel" uib-btn-radio="'isBuying'" uncheckable>Cần mua</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group clearfix" ng-class="{
