@@ -5,10 +5,16 @@
             return callback();
         } else {
             $timeout(function () {
-                angular.forEach($scope.$context.imageFiles, function(value, key) {
-                    this.push(key + ': ' + value);
-                    var element = '<img id="' + key + '" style="background-image: url(' + value + ')" alt="your image" />';
-                    $("#imagesSection").append(element);
+                angular.forEach($scope.$context.data.imageFiles, function (value, key) {
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(value.file);
+                    fileReader.onload = function (e) {
+                        $timeout(function () {
+                            var imageData = e.target.result;
+                            var element = '<img id="' + key + '" style="background-image: url(' + imageData + '); background-size: cover;" height="96" width="96"/>';
+                            $("#imagesSection").append(element);
+                        });
+                    }
                     return callback();
                 });
                 return callback();

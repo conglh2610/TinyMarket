@@ -13,7 +13,7 @@
     $scope.$context.behavior.leaving = function (options, callback) {
         if (options.forward) {
             $timeout(function () {
-                $scope.$context.imageFiles = $scope.interface.getFiles($scope.interface.FILE_TYPES.VALID);
+                $scope.$context.data.imageFiles = $scope.interface.getFiles($scope.interface.FILE_TYPES.VALID);
 
                 $scope.informationForm.$setSubmitted();
                 return callback($scope.informationForm.$valid);
