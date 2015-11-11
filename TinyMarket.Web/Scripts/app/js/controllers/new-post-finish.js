@@ -7,25 +7,25 @@
         }
     });
 
-    $scope.$context.navigation.buttons = [
-      {
-          text: 'Go First',
-          stepFn: function () {
-              return $scope.steps[0].id;
-          }
-      },
-      {
-          text: 'Go Last',
-          stepFn: function () {
-              return $scope.steps[$scope.steps.length - 1].id;
-          }
-      },
-      {
-          text: 'Go Dynamic',
-          stepFn: function () {
-              return $scope.targetStepId;
-          }
-      },
-    ];
+    //$scope.$context.navigation.buttons = [
+    //  {
+    //      text: 'Go First',
+    //      stepFn: function () {
+    //          return $scope.steps[0].id;
+    //      }
+    //  },
+    //  {
+    //      text: 'Go Last',
+    //      stepFn: function () {
+    //          return $scope.steps[$scope.steps.length - 1].id;
+    //      }
+    //  },
+    //  {
+    //      text: 'Go Dynamic',
+    //      stepFn: function () {
+    //          return $scope.targetStepId;
+    //      }
+    //  },
+    //];
 
 }]);

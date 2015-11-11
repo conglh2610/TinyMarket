@@ -53,6 +53,7 @@
                 '     <div class="row">' +
                 '       <div class="col-sm-12 text-right bottom-prev-next">' +
                 '           <button class="btn btn-primary btn-prev pull-left" ' +
+                '                   ng-show="!_showFinishButton" ' +
                 '                   ng-disabled="_entering || _leaving || _history.length <= 0" ' +
                 '                   ng-click="previous()">Trở về trang trước</button>' +
                 '           <button class="btn btn-primary btn-next"' +
@@ -60,11 +61,12 @@
                 '                   ng-disabled="_entering || _leaving" ' +
                 '                   ng-click="next()">Tiếp tục</button>' +
                 '        <div class="btn-group pull-right theme-container animated tada">' + 
-                '           <button class=" btn btn-success" ' +
+                '           <button class=" btn btn-success"  style="margin-right: 1px !important"' +
                 '                   ng-show="$stepsOrder.indexOf($current.step.id) == 1" ' +
                 '                   ng-disabled="_entering || _leaving" ' +
                 '                   ng-click="post()">Đăng bài</button>' +
-                '           <button class="btn btn-default" ng-click="cancel()">Hủy</button>' +
+                '           <button class="btn btn-default" ng-show="!_showFinishButton" ng-click="cancel()">Hủy</button>' +
+                '           <button class="btn btn-success" ng-show="_showFinishButton" ng-click="cancel()">Xong</button>' +
                 '        </div>' +
                 '       </div>' +
                 '      </div>' +

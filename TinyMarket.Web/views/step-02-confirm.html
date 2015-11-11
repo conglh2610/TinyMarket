@@ -71,20 +71,20 @@
                 <div class="form-group clearfix">
                     <label class="col-sm-3 control-label text-right">Mật khẩu: </label>
                     <div class="col-sm-3">
-                        <input class="form-control" data-ng-model='$context.data.password' type="password" name='password' placeholder='nhập mật khẩu' required>
+                        <input class="form-control" ng-model='$context.data.password' type="password" name='password' placeholder='nhập mật khẩu' required>
                     </div>
                     <div class="col-sm-3">
-                        <div class="alert alert-danger" ng-show="confirmForm.password.$error.required && confirmForm.password.$dirty">Bạn chưa nhập mật khẩu</div>
+                        <div class="alert alert-danger" ng-show="confirmForm.password.$error.required && (confirmForm.password.$dirty || confirmForm.$submitted)">Bạn chưa nhập mật khẩu</div>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-sm-3 control-label text-right">Nhập lại mật khẩu: </label>
                     <div class="col-sm-3">
-                        <input class="form-control" ng-model='$context.data.password_verify' type="password" name='confirm_password' placeholder='nhập lại mật khẩu' required data-password-verify="$context.data.password">
+                        <input class="form-control" ng-model='$context.data.password_verify' type="password" name='confirm_password' placeholder='nhập lại mật khẩu' required verify-password="$context.data.password">
                     </div>
                     <div class="col-sm-3">
-                        <div class="alert alert-danger" ng-show="confirmForm.confirm_password.$error.required && confirmForm.confirm_password.$dirty">Nhập lại mật khẩu</div>
-                        <div class="alert alert-danger" ng-show="confirmForm.confirm_password.$error.passwordVerify && confirmForm.confirm_password.$dirty">Mật khẩu không phù hợp</div>
+                        <div class="alert alert-danger" ng-show="confirmForm.confirm_password.$error.required && (confirmForm.confirm_password.$dirty || confirmForm.$submitted)">Nhập lại mật khẩu</div>
+                        <div class="alert alert-danger" ng-show="(confirmForm.confirm_password.$error.verifyPassword) && (confirmForm.confirm_password.$dirty || confirmForm.$submitted)">Mật khẩu không phù hợp</div>
                     </div>
                 </div>
             </div>

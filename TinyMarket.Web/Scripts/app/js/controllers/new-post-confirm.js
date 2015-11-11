@@ -33,33 +33,21 @@
     };
 }]);
 
-myApp.directive("passwordVerify", function () {
+myApp.directive('verifyPassword', function () {
     return {
-        require: "ngModel",
-        scope: {
-            passwordVerify: '='
-        },
-        link: function (scope, element, attrs, ctrl) {
-            scope.$watch('$context.data.password', function () {
-                var combined;
-
-                if ($scope.$context.data.passwordVerify || ctrl.$viewValue) {
-                    combined = $scope.$context.data.passwordVerify + '_' + ctrl.$viewValue;
-                }
-                return combined;
-            }, function (value) {
-                if (value) {
-                    ctrl.$parsers.unshift(function (viewValue) {
-                        var origin = $scope.$context.data.passwordVerify;
-                        if (origin !== viewValue) {
-                            ctrl.$setValidity("passwordVerify", false);
-                            return undefined;
-                        } else {
-                            ctrl.$setValidity("passwordVerify", true);
-                            return viewValue;
-                        }
-                    });
-                }
+        require: 'ngModel',
+        link: function (scope, elem, attrs, model) {
+            if (!attrs.verifyPassword) {
+                console.error('nxEqual expects a model as an argument!');
+                return;
+            }
+            scope.$watch(attrs.verifyPassword, function (value) {
+                model.$setValidity('verifyPassword', value === model.$viewValue);
+            });
+            model.$parsers.push(function (value) {
+                var isValid = value === scope.$eval(attrs.verifyPassword);
+                model.$setValidity('verifyPassword', isValid);
+                return isValid ? value : undefined;
             });
         }
     };
