@@ -186,8 +186,22 @@
                                         };
 
                                         $scope.post = function () {
-                                            /// need to implement post here /
-                                            $scope.next();
+
+                                            $http.put('api/posts/savepost', $scope.data).
+                                                success(function (data, status, headers, config) {
+
+                                                var results = [];
+
+                                                results.data = data;
+                                                results.headers = headers();
+                                                results.status = status;
+                                                results.config = config;
+
+                                                deferred.resolve(results);
+
+                                                $scope.next();
+                                            }).error(deferred.reject);
+                                          
                                         };
 
                                         $scope.next = function () {

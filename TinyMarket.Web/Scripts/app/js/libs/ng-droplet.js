@@ -8,38 +8,13 @@
     function DropletDirective($rootScope, $window, $timeout, $q) {
 
         return {
-
-            /**
-             * @property restrict
-             * @type {String}
-             */
             restrict: 'EA',
-
-            /**
-             * @property require
-             * @type {String}
-             */
             require: '?ngModel',
-
-            /**
-             * @property scope
-             * @type {Object}
-             */
             scope: {
                 interface: '=ngModel'
             },
-
-            /**
-             * @method controller
-             * @param $scope {Object}
-             * @return {void}
-             */
             controller: ['$scope', function DropletController($scope) {
 
-                /**
-                 * @constant FILE_TYPES
-                 * @type {Object}
-                 */
                 $scope.FILE_TYPES = { VALID: 1, INVALID: 2, DELETED: 4, UPLOADED: 8, FAILED: 16 };
 
                 // Dynamically add the `ALL` property.
@@ -47,38 +22,12 @@
                     return (current |= $scope.FILE_TYPES[key]);
                 }, 0);
 
-                /**
-                 * @property files
-                 * @type {Array}
-                 */
                 $scope.files = [];
-
-                /**
-                 * @property isUploading
-                 * @type {Boolean}
-                 */
                 $scope.isUploading = false;
-
-                /**
-                 * @property isError
-                 * @type {Boolean}
-                 */
                 $scope.isError = false;
 
-                /**
-                 * @method _isValid
-                 * @param value {String|Number}
-                 * @param values {Array}
-                 * @return {Boolean}
-                 * @private
-                 */
                 var _isValid = function _isValid(value, values) {
 
-                    /**
-                     * @method conditionallyLowercase
-                     * @param value {String|Number}
-                     * @return {String|Number}
-                     */
                     var conditionallyLowercase = function conditionallyLowercase(value) {
 
                         if (typeof value === 'string') {
@@ -106,14 +55,6 @@
 
                 };
 
-                /**
-                 * Responsible for determining if the event is actually a jQuery event, which has therefore
-                 * placed the original event inside of the `originalEvent` property.
-                 *
-                 * @method getEvent
-                 * @param event {Object}
-                 * @return {Object}
-                 */
                 $scope.getEvent = function getEvent(event) {
 
                     if ('originalEvent' in event) {
@@ -128,146 +69,51 @@
 
                 };
 
-                /**
-                 * @method isValidHTTPStatus
-                 * @param statusCode {Number}
-                 * @return {Boolean}
-                 */
                 $scope.isValidHTTPStatus = function isValidHTTPStatus(statusCode) {
                     return _isValid(statusCode, $scope.options.statuses.success);
                 };
 
-                /**
-                 * @method isValidExtension
-                 * @param extension {String}
-                 * @return {Boolean}
-                 */
                 $scope.isValidExtension = function isValidExtension(extension) {
                     return _isValid(extension, $scope.options.extensions);
                 };
 
-                /**
-                 * @property options
-                 * @type {Object}
-                 */
                 $scope.options = {
 
-                    /**
-                     * URL that will be called when making the POST request.
-                     *
-                     * @property requestUrl
-                     * @type {String}
-                     */
                     requestUrl: '',
 
-                    /**
-                     * Determines whether the X-File-Size header is appended to the request.
-                     *
-                     * @property disableXFileSize
-                     * @type {Boolean}
-                     */
                     disableXFileSize: false,
 
-                    /**
-                     * @property parserFn
-                     * @type {Function}
-                     */
                     parserFn: function parserFunction(responseText) {
                         return $window.JSON.parse(responseText);
                     },
 
-                    /**
-                     * Whether to use the array notation for the file parameter, or not.
-                     *
-                     * @property useArray
-                     * @type {Boolean}
-                     */
                     useArray: true,
 
-                    /**
-                     * @property maximumValidFiles
-                     * @type {Number|Infinity}
-                     * @default Infinity
-                     */
                     maximumValidFiles: Infinity,
 
-                    /**
-                     * Additional headers to append to the request.
-                     *
-                     * @property requestHeaders
-                     * @type {Object}
-                     */
                     requestHeaders: {},
 
-                    /**
-                     * Additional POST to data to be appended to the FormData object.
-                     *
-                     * @property requestPostData
-                     * @type {Object}
-                     */
                     requestPostData: {},
 
-                    /**
-                     * List of valid extensions for uploading to the server.
-                     *
-                     * @property extensions
-                     * @type {Array}
-                     */
                     extensions: [],
 
-                    /**
-                     * @property statuses
-                     * @type {Object}
-                     */
                     statuses: {
 
-                        /**
-                         * List of HTTP status codes that denote a successful HTTP request.
-                         *
-                         * @property success
-                         * @type {Array}
-                         */
                         success: [/2.{2}/]
 
                     }
                 };
 
-                /**
-                 * @property requestProgress
-                 * @type {Object}
-                 */
                 $scope.requestProgress = { percent: 0, total: 0, loaded: 0 };
 
-                /**
-                 * @property listeners
-                 * @type {Object}
-                 */
                 $scope.listeners = {
 
-                    /**
-                     * @property files
-                     * @type {Array}
-                     */
                     files: [],
 
-                    /**
-                     * @property deferred
-                     * @type {$q.defer|null}
-                     */
                     deferred: null,
 
-                    /**
-                     * @property httpRequest
-                     * @type {XMLHttpRequest|null}
-                     */
                     httpRequest: null,
 
-                    /**
-                     * Invoked once everything has been uploaded.
-                     *
-                     * @method success
-                     * @return {void}
-                     */
                     success: function success() {
 
                         this.httpRequest.onreadystatechange = function onReadyStateChange() {
@@ -320,12 +166,6 @@
 
                     },
 
-                    /**
-                     * Invoked when an error is thrown when uploading the files.
-                     *
-                     * @method error
-                     * @return {void}
-                     */
                     error: function error() {
 
                         this.httpRequest.upload.onerror = function onError() {
@@ -345,12 +185,6 @@
 
                     },
 
-                    /**
-                     * Invoked each time there's a progress update on the files being uploaded.
-                     *
-                     * @method progress
-                     * @return {void}
-                     */
                     progress: function progress() {
 
                         var requestLength = $scope.getRequestLength(this.files);
@@ -376,29 +210,12 @@
 
                 };
 
-                /**
-                 * @method createModelBlueprint
-                 * @return {void}
-                 */
                 (function createModelBlueprint() {
 
-                    /**
-                     * @model DropletModel
-                     * @constructor
-                     */
                     $scope.DropletModel = function DropletModel() {};
 
-                    /**
-                     * @property prototype
-                     * @type {Object}
-                     */
                     $scope.DropletModel.prototype = {
 
-                        /**
-                         * @method file
-                         * @param file {File}
-                         * @return {void}
-                         */
                         load: function load(file) {
 
                             if (!(file instanceof $window.File) && !(file instanceof $window.Blob)) {
@@ -415,10 +232,6 @@
 
                         },
 
-                        /**
-                         * @method deleteFile
-                         * @return {void}
-                         */
                         deleteFile: function deleteFile() {
 
                             this.setType($scope.FILE_TYPES.DELETED);
@@ -428,19 +241,10 @@
 
                         },
 
-                        /**
-                         * @method setType
-                         * @param type {Number}
-                         * @return {void}
-                         */
                         setType: function setType(type) {
                             this.type = type;
                         },
 
-                        /**
-                         * @method isImage
-                         * @return {Boolean}
-                         */
                         isImage: function isImage() {
                             return !!this.file.type.match(/^image\//i);
                         }
@@ -449,10 +253,7 @@
 
                 })();
 
-                /**
-                 * @method finishedUploading
-                 * @return {void}
-                 */
+
                 $scope.finishedUploading = function finishedUploading() {
 
                     $scope.progress    = { percent: 0, total: 0, loaded: 0 };
@@ -460,14 +261,6 @@
 
                 };
 
-                /**
-                 * Utility method for iterating over files of a given type.
-                 *
-                 * @method forEachFile
-                 * @param type {Number}
-                 * @param callbackFn {Function}
-                 * @return {void}
-                 */
                 $scope.forEachFile = function forEachFile(type, callbackFn) {
 
                     $angular.forEach($scope.filterFiles(type || $scope.FILE_TYPES.VALID), function forEach(model) {
@@ -476,12 +269,6 @@
 
                 };
 
-                /**
-                 * @method addFile
-                 * @param file {File}
-                 * @param type {Number}
-                 * @return {Object}
-                 */
                 $scope.addFile = function addFile(file, type) {
 
                     // If the developer didn't specify the type then we'll assume it's a valid file
@@ -498,11 +285,6 @@
 
                 };
 
-                /**
-                 * @method filterFiles
-                 * @param type {Number}
-                 * @return {Array}
-                 */
                 $scope.filterFiles = function filterFiles(type) {
 
                     return $scope.files.filter(function filter(file) {
@@ -511,11 +293,6 @@
 
                 };
 
-                /**
-                 * @method getExtension
-                 * @param file {File}
-                 * @return {String}
-                 */
                 $scope.getExtension = function getExtension(file) {
 
 	                var str, separator;
@@ -537,11 +314,6 @@
 
                 };
 
-                /**
-                 * @method traverseFiles
-                 * @param files {FileList}
-                 * @return {void}
-                 */
                 $scope.traverseFiles = function traverseFiles(files) {
 
                     for (var index = 0, numFiles = files.length; index < numFiles; index++) {
@@ -567,10 +339,6 @@
 
                 };
 
-                /**
-                 * @method uploadFiles
-                 * @return {$q.promise}
-                 */
                 $scope.uploadFiles = function uploadFiles() {
 
                     // Reset...
@@ -636,14 +404,6 @@
 
                 };
 
-                /**
-                 * Iterate over any additional headers added by the developer and append to the current
-                 * request being generated.
-                 *
-                 * @method addRequestHeaders
-                 * @param httpRequest {XMLHttpRequest}
-                 * @return {Array}
-                 */
                 $scope.addRequestHeaders = function addRequestHeaders(httpRequest) {
 
                     for (var header in $scope.options.requestHeaders) {
@@ -658,13 +418,6 @@
 
                 };
 
-                /**
-                 * Iterate over any additional POST data that must be bundled with the request.
-                 *
-                 * @method addPostData
-                 * @param formData {FormData}
-                 * @return {Array}
-                 */
                 $scope.addPostData = function addPostData(formData) {
 
                     for (var header in $scope.options.requestPostData) {
@@ -679,13 +432,6 @@
 
                 };
 
-                /**
-                 * Determine the size of the request based on the files preparing to be uploaded.
-                 *
-                 * @method getRequestLength
-                 * @param [files=[]] {Array}
-                 * @return {Number}
-                 */
                 $scope.getRequestLength = function getRequestLength(files) {
 
                     var allFiles = files || $scope.filterFiles($scope.FILE_TYPES.VALID);
@@ -697,53 +443,20 @@
 
                 };
 
-                /**
-                 * @method throwException
-                 * @param message {String}
-                 * @return {void}
-                 */
                 $scope.throwException = function throwException(message) {
                     throw "ngDroplet: " + message + ".";
                 };
 
-                /**
-                 * Responsible for setting up the interface that allows the developer to interact
-                 * with the directive from outside.
-                 *
-                 * @method setupDirectiveInterface
-                 * @return {void}
-                 */
                 (function setupDirectiveInterface() {
 
-                    /**
-                     * @property interface
-                     * @type {Object}
-                     */
                     $scope.interface = {
 
-                        /**
-                         * @constant FILE_TYPES
-                         * @type {Object}
-                         */
                         FILE_TYPES: $scope.FILE_TYPES,
 
-                        /**
-                         * @method uploadFiles
-                         * @return {void}
-                         */
                         uploadFiles: $scope.uploadFiles,
 
-                        /**
-                         * @property progress
-                         * @type {Object}
-                         */
                         progress: $scope.requestProgress,
 
-                        /**
-                         * @method useParser
-                         * @param parserFn {Function}
-                         * @return {void}
-                         */
                         useParser: function useParser(parserFn) {
 
                             if (typeof parserFn !== 'function') {
@@ -754,96 +467,42 @@
 
                         },
 
-                        /**
-                         * @method isUploading
-                         * @return {Boolean}
-                         */
                         isUploading: function isUploading() {
                             return $scope.isUploading;
                         },
 
-                        /**
-                         * @method isError
-                         * @type {Boolean}
-                         */
                         isError: function isError() {
                             return $scope.isError;
                         },
 
-                        /**
-                         * Determines if there are files ready and waiting to be uploaded.
-                         *
-                         * @method isReady
-                         * @return {Boolean}
-                         */
                         isReady: function isReady() {
                             return !!$scope.filterFiles($scope.FILE_TYPES.VALID).length;
                         },
 
-                        /**
-                         * @method addFile
-                         * @param file {File}
-                         * @param type {Number}
-                         * @return {void}
-                         */
                         addFile: $scope.addFile,
 
-                        /**
-                         * @method traverseFiles
-                         * @param files {FileList}
-                         * @return {void}
-                         */
                         traverseFiles: $scope.traverseFiles,
 
-                        /**
-                         * @method disableXFileSize
-                         * @return {void}
-                         */
                         disableXFileSize: function disableXFileSize() {
                             $scope.options.disableXFileSize = true;
                         },
 
-                        /**
-                         * @method useArray
-                         * @param value {Boolean}
-                         * @return {void}
-                         */
                         useArray: function useArray(value) {
                             $scope.options.useArray = !!value;
                         },
 
-                        /**
-                         * @method setRequestUrl
-                         * @param url {String}
-                         * @return {void}
-                         */
                         setRequestUrl: function setRequestUrl(url) {
                             $scope.options.requestUrl = url;
                         },
 
-                        /**
-                         * @method setRequestHeaders
-                         * @param headers {Object}
-                         * @return {void}
-                         */
                         setRequestHeaders: function setRequestHeaders(headers) {
                             $scope.options.requestHeaders = headers;
                         },
 
-                        /**
-                         * @method setPostData
-                         * @param data {Object}
-                         * @return {void}
-                         */
                         setPostData: function setPostData(data) {
                             $scope.options.requestPostData = data;
                         },
 
-                        /**
-                         * @method getFiles
-                         * @param type {Number}
-                         * @return {Array}
-                         */
                         getFiles: function getFiles(type) {
 
                             if (type) {
@@ -873,11 +532,6 @@
 
                         },
 
-                        /**
-                         * @method allowedExtensions
-                         * @param extensions {Array}
-                         * @return {void}
-                         */
                         allowedExtensions: function allowedExtensions(extensions) {
 
                             if (!$angular.isArray(extensions)) {
@@ -891,11 +545,6 @@
 
                         },
 
-                        /**
-                         * @method defineHTTPSuccess
-                         * @param statuses {Array}
-                         * @return {void}
-                         */
                         defineHTTPSuccess: function defineHTTPSuccess(statuses) {
 
                             if (!$angular.isArray(statuses)) {

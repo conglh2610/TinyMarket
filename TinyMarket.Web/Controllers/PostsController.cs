@@ -17,6 +17,7 @@ using System.Web.Http;
 using Google.Apis;
 using System.IO;
 using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace TinyMarket.Web.Controllers
 {
@@ -36,8 +37,8 @@ namespace TinyMarket.Web.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, posts.ToList());
         }
 
-        [HttpPost]
-        public async System.Threading.Tasks.Task<HttpResponseMessage> SavePost()
+        [HttpPut]
+        public async System.Threading.Tasks.Task<HttpResponseMessage> SavePost(JObject data)
         {
             
             string path = HttpContext.Current.Server.MapPath("~/"); ; 
