@@ -186,22 +186,54 @@
                                         };
 
                                         $scope.post = function () {
+                                            var deferred = $q.defer();
 
-                                            $http.put('api/posts/savepost', $scope.data).
-                                                success(function (data, status, headers, config) {
+                                            //var formData = new FormData();
+                                            //formData.append("model", angular.toJson($scope.$data.model));
+                                            //for (var i = 0; i < $scope.$data.imageFiles.length; i++) {
+                                            //    formData.append("file" + i, $scope.$data.imageFiles[i].file);
+                                            //}
 
-                                                var results = [];
+                                            //$http({
+                                            //    method: 'POST',
+                                            //    url: "api/posts/savepost",
+                                            //    contentType: false,
+                                            //    //processData: false,
+                                            //    transformRequest: function (data) {
 
-                                                results.data = data;
-                                                results.headers = headers();
-                                                results.status = status;
-                                                results.config = config;
+                                            //    },
+                                            //    data: formData
+                                            //}).success(function (data, status, headers, config) {
 
-                                                deferred.resolve(results);
+                                            //    var results = [];
 
-                                                $scope.next();
-                                            }).error(deferred.reject);
-                                          
+                                            //    results.data = data;
+                                            //    results.headers = headers();
+                                            //    results.status = status;
+                                            //    results.config = config;
+
+                                            //    deferred.resolve(results);
+
+                                            //    $scope.next();
+                                            //}).error(
+                                            //deferred.reject
+                                            //);
+
+                                            var formData = new FormData();
+                                            formData.append("model", angular.toJson( $scope.$data.model));
+                                            for (var i = 0; i < $scope.$data.imageFiles.length; i++) {
+                                                formData.append("file" + i, $scope.$data.imageFiles[i].file);
+                                            }
+
+                                            $http.post("api/posts/savepost", formData, {
+                                                transformRequest: angular.identity,
+                                                headers: { 'Content-Type': undefined }
+                                            })
+                                            .success(function () {
+                                            })
+                                            .error(function () {
+                                            });
+
                                         };
 
                                         $scope.next = function () {
@@ -400,8 +432,7 @@
                                                          serviceCommon,
                                                          regionService,
                                                          categoryService,
-                                                         $timeout)
-        {
+                                                         $timeout) {
 
                                      $scope.data = {};
                                      var getAllRegions = function () {

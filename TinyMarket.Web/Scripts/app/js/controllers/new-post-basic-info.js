@@ -4,7 +4,7 @@
             return callback();
         } else {
             $timeout(function () {
-                $scope.$context.data.radioModel = 'isSelling';
+                $scope.$context.data.model.radioModel = 'isSelling';
                 return callback();
             }, 5);
         }

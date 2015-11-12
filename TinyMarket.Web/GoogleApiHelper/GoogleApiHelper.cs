@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 using System.Net.Http.Headers;
-using TinyMarket.Web.Models;
+using File = Google.Apis.Drive.v2.Data.File;
+using FileInfo = TinyMarket.Web.Models.FileInfo;
 
 namespace TinyMarket.Web.GoogleApiHelper
 {
@@ -101,11 +104,11 @@ namespace TinyMarket.Web.GoogleApiHelper
 
         }
 
-        public static List<File> UploadFileFromRequest(DriveService _service, MultipartMemoryStreamProvider provider, string _parent)
+        public static List<File> UploadFileFromRequest(DriveService _service, Collection<MultipartFileData> files, string _parent)
         {
             List<File> result = new List<File>();
 
-            foreach (var file in provider.Contents)
+            foreach (var file in files)
             {
                 File body = new File();
                 body.Title = Guid.NewGuid().ToString();
@@ -113,8 +116,9 @@ namespace TinyMarket.Web.GoogleApiHelper
                 body.MimeType = new MediaTypeHeaderValue("image/jpg").ToString();
                 body.Parents = new List<ParentReference>() { new ParentReference() { Id = _parent } };
 
-                var buffer = file.ReadAsByteArrayAsync().Result;
-                var stream = new System.IO.MemoryStream(buffer);
+                FileStream stream = new FileStream(file.LocalFileName, FileMode.Open);
+                //var buffer = file.ReadAsByteArrayAsync().Result;
+                //var stream = new System.IO.MemoryStream(buffer);
 
                 try
                 {
@@ -290,7 +294,6 @@ namespace TinyMarket.Web.GoogleApiHelper
             }
             return Files;
         }
-
 
     }
 }

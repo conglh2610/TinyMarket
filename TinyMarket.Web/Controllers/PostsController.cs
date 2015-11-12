@@ -1,4 +1,7 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Google.Apis.Auth.OAuth2;
+using Newtonsoft.Json;
 using TinyMarket.Web.GoogleApiHelper;
 using Google.Apis.Drive.v2.Data;
 using Google.Apis.Drive.v2;
@@ -18,6 +21,7 @@ using Google.Apis;
 using System.IO;
 using System.Web;
 using Newtonsoft.Json.Linq;
+using File = System.IO.File;
 
 namespace TinyMarket.Web.Controllers
 {
@@ -37,33 +41,50 @@ namespace TinyMarket.Web.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, posts.ToList());
         }
 
-        [HttpPut]
-        public async System.Threading.Tasks.Task<HttpResponseMessage> SavePost(JObject data)
+        [HttpPost]
+        public async Task<HttpResponseMessage> SavePost()
         {
-            
-            string path = HttpContext.Current.Server.MapPath("~/"); ; 
-            List<Google.Apis.Drive.v2.Data.File> files = null;
             if (!Request.Content.IsMimeMultipartContent())
             {
-                return Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, "The request doesn't contain valid content!");
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
+            string uploadPath = HttpContext.Current.Server.MapPath("~/") + "UploadFiles";
+            if (!Directory.Exists(uploadPath))
+                Directory.CreateDirectory(uploadPath);
+            List<Google.Apis.Drive.v2.Data.File> files = null;
             try
             {
+                var provider = new MultipartFormDataStreamProvider(uploadPath);
+                var result = await Request.Content.ReadAsMultipartAsync(provider);
+                if (result.FormData["model"] == null)
+                {
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                }
 
+                var model = result.FormData["model"];
+                //TODO: Do something with the json model which is currently a string
+
+
+
+                //get the files
+                foreach (var file in result.FileData)
+                {
+                    //TODO: Do something with each uploaded file
+                }
                 ClientSecrets secrets = new ClientSecrets
                 {
                     ClientId = Constants.CLIENT_ID,
                     ClientSecret = Constants.CLIENT_SECRET
                 };
 
-                var fileDataStore = new FileDataStore(path + "Resources");
-                path = fileDataStore.FolderPath;
+                var fileDataStore = new FileDataStore(HttpContext.Current.Server.MapPath("~/") + "Resources");
+
                 UserCredential credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                                            secrets,
-                                            new[] { DriveService.Scope.Drive },
-                                            "lhcongtk32@gmail.com",
-                                            CancellationToken.None, fileDataStore
-                                            );
+                    secrets,
+                    new[] { DriveService.Scope.Drive },
+                    "lhcongtk32@gmail.com",
+                    CancellationToken.None, fileDataStore
+                    );
 
                 var service = new DriveService(new BaseClientService.Initializer()
                 {
@@ -71,46 +92,42 @@ namespace TinyMarket.Web.Controllers
                     ApplicationName = Constants.APP_USER_AGENT
                 });
 
-
-                HttpRequestMessage request = this.Request;
-                if (!request.Content.IsMimeMultipartContent())
-                {
-                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-                }
-
-                var provider = new MultipartMemoryStreamProvider();
-                await Request.Content.ReadAsMultipartAsync(provider);
-
                 string Q = "title = 'TinyMarket_Folder' and mimeType = 'application/vnd.google-apps.folder'";
                 IList<Google.Apis.Drive.v2.Data.File> _Files = GoogleApiHelper.GoogleApiHelper.GetFiles(service, Q);
-                // If there isn't a directory with this name lets create one.
                 if (_Files.Count == 0)
                 {
-                    _Files.Add(GoogleApiHelper.GoogleApiHelper.createDirectory(service, "TinyMarket_Folder", "TinyMarket_Folder", "root"));
+                    _Files.Add(GoogleApiHelper.GoogleApiHelper.createDirectory(service, "TinyMarket_Folder",
+                        "TinyMarket_Folder", "root"));
                 }
 
-                // We should have a directory now because we either had it to begin with or we just created one.
                 if (_Files.Count != 0)
                 {
-
-                    // This is the ID of the directory 
                     string directoryId = _Files[0].Id;
-                    //List<string> lst = new List<string> { "0B-xT1h5y02NaWGxsY09TLUhkZ2M" };
-                    //var a = GoogleApiHelper.GoogleApiHelper.GetFileInfos(service, lst, directoryId);
 
-                    files = GoogleApiHelper.GoogleApiHelper.UploadFileFromRequest(service, provider, directoryId);
+                    files = GoogleApiHelper.GoogleApiHelper.UploadFileFromRequest(service, result.FileData, directoryId);
                     var list = service.Files.Get(files[0].Id);
-
                 }
 
             }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, path);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
             }
+            finally
+            {
+                string[] filesToDelete = Directory.GetFiles(uploadPath);
 
+                foreach (string file in filesToDelete)
+                {
+                    if (File.Exists(file))
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
             return Request.CreateResponse(HttpStatusCode.OK, files);
         }
+
 
     }
 }
