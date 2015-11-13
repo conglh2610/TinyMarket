@@ -116,12 +116,14 @@ namespace TinyMarket.Web.Controllers
             finally
             {
                 string[] filesToDelete = Directory.GetFiles(uploadPath);
-
                 foreach (string file in filesToDelete)
                 {
                     if (File.Exists(file))
                     {
-                        File.Delete(file);
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        FileInfo f = new FileInfo(file);
+                        f.Delete();
                     }
                 }
             }
