@@ -10,7 +10,7 @@
                     'has-success': informationForm.$submitted && informationForm.name.$valid}">
                     <label class="col-sm-2 control-label text-right" for="name">Tên: </label>
                     <div class="col-sm-6">
-                        <input id="name" name="name" class="form-control" type="text" ng-model="$context.data.model.username" required autofocus></input>
+                        <input id="name" name="name" class="form-control" type="text" ng-model="$context.data.model.Name" required autofocus></input>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.name.$error.required">Nhập tên</div>
@@ -21,7 +21,7 @@
                     'has-success': informationForm.$submitted && informationForm.email.$valid}">
                     <label class="col-sm-2 control-label text-right" for="name">Email: </label>
                     <div class="col-sm-6">
-                        <input id="email" name="email" class="form-control" type="text" ng-model="$context.data.model.email" required></input>
+                        <input id="email" name="email" class="form-control" type="text" ng-model="$context.data.model.Email" required></input>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.email.$error.required">Chúng tôi sẽ liên hệ thông qua email này</div>
@@ -32,7 +32,7 @@
                     'has-success': informationForm.$submitted && informationForm.phone.$valid}">
                     <label class="col-sm-2 control-label text-right" for="name">Số điện thoại: </label>
                     <div class="col-sm-6">
-                        <input id="phone" name="phone" class="form-control" type="text" ng-model="$context.data.model.phone" required></input>
+                        <input id="phone" name="phone" class="form-control" type="text" ng-model="$context.data.model.Phone" required></input>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.phone.$error.required">Nhập số điện thoại</div>
@@ -52,7 +52,7 @@
                     'has-success': informationForm.$submitted && informationForm.category.$valid}">
                     <label class="col-sm-2 control-label text-right" for="category">Hạng mục: </label>
                     <div class="col-sm-6">
-                        <select class="form-control" name="category" ng-model="$context.data.model.category" required
+                        <select class="form-control" name="category" ng-model="$context.data.model.CategoryDetail" required
                                 ng-options="p.Name for p in $context.data.model.categoryDataSource">
                             <option value=""><<--chọn hạng mục-->></option>
                         </select>
@@ -66,7 +66,7 @@
                     'has-success': informationForm.$submitted && informationForm.region.$valid}">
                     <label class="col-sm-2 control-label text-right" for="region">Vùng: </label>
                     <div class="col-sm-6">
-                        <select class="form-control" name="region" ng-model="$context.data.model.region" required
+                        <select class="form-control" name="region" ng-model="$context.data.model.Region" required
                                 ng-options="p.Name for p in $context.data.model.regionDataSource">
                             <option value=""><<--chọn vùng-->></option>
                         </select>
@@ -80,8 +80,8 @@
                     <label class="col-sm-2 control-label text-right" for="postType">Loại tin: </label>
                     <div class="btn-group col-sm-6">
                         <div class="btn-group">
-                            <label class="btn btn-success" ng-model="$context.data.model.radioModel" uib-btn-radio="'isSelling'" uncheckable>Cần bán</label>
-                            <label class="btn btn-success" ng-model="$context.data.model.radioModel" uib-btn-radio="'isBuying'" uncheckable>Cần mua</label>
+                            <label class="btn btn-success" ng-model="typesModel" uib-btn-radio="'isSelling'">Cần bán</label>
+                            <label class="btn btn-success" ng-model="typesModel" uib-btn-radio="'isBuying'">Cần mua</label>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     'has-success': informationForm.$submitted && informationForm.title.$valid}">
                     <label class="col-sm-2 control-label text-right" for="name">Tiêu Đề: </label>
                     <div class="col-sm-6">
-                        <input id="phone" name="title" class="form-control" type="text" ng-model="$context.data.model.title" required></input>
+                        <input id="phone" name="title" class="form-control" type="text" ng-model="$context.data.model.Title" required></input>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.title.$error.required">Nhập tiêu đề</div>
@@ -102,7 +102,7 @@
                     <label class="col-sm-2 control-label text-right" for="name">Nội dung: </label>
                     <div class="col-sm-6">
                         <textarea name="Contain" class="form-control" rows="10" ng-minlength="20" ng-maxlength="1000" placeholder="Điền nội dung ở đây ..."
-                                  ng-model="$context.data.model.Contain" required></textarea>
+                                  ng-model="$context.data.model.Detail" required></textarea>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.Contain.$error.required">Bạn chưa điền nội dung</div>
@@ -113,7 +113,7 @@
                     'has-success': informationForm.$submitted && informationForm.price.$valid}">
                     <label class="col-sm-2 control-label text-right" for="name">Giá: </label>
                     <div class="col-sm-6">
-                        <input name="price" class="form-control" type="text" ng-model="$context.data.model.price" required></input>
+                        <input name="price" class="form-control" type="text" ng-model="$context.data.model.Price" required></input>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="informationForm.$submitted && informationForm.price.$error.required">Nhập giá</div>

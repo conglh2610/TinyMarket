@@ -11,7 +11,6 @@ namespace Infrastructure.Services
 {
     public interface IRegionService : IRepository<Region>
     {
-        IQueryable<Region> GetRegions();
     }
     public class RegionService : IRegionService
     {
@@ -22,28 +21,49 @@ namespace Infrastructure.Services
             this.regionRepository = regionRepository;
         }
 
+
         public IQueryable<Region> Get { get; private set; }
-
-        public void Delete(Region entity)
+        public Region Find(object[] keyValues)
         {
             throw new NotImplementedException();
         }
 
-        public Region GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public IQueryable<Region> GetRegions()
-        {
-            return regionRepository.Get;
-        }
-
-        public void Insert(Region entity)
+        public Region Find(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Region> SearchFor(Expression<Func<Region, bool>> predicate)
+        public Region Find(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Region Add(Region entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Region Update(Region entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Region AddOrUpdate(Region entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Region entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
         {
             throw new NotImplementedException();
         }

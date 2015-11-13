@@ -22,29 +22,62 @@ namespace Infrastructure.Services
             this.postRepository = postRepository;
         }
 
-        public IQueryable<Posts> Get { get; private set; }
 
-        public void Delete(Posts entity)
+        public IQueryable<Posts> Get { get; private set; }
+        public Posts Find(object[] keyValues)
         {
             throw new NotImplementedException();
         }
 
-        public Posts GetById(int id)
+        public Posts Find(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Posts Find(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Posts Add(Posts entity)
+        {
+            Posts result = null;
+            if (entity != null)
+            {
+                entity.CreateDate = DateTime.Now;
+                entity.LastChangeDate = DateTime.Now;
+                result = postRepository.Add(entity);
+            }
+
+            return result;
+        }
+
+        public Posts Update(Posts entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Posts AddOrUpdate(Posts entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Posts entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
         {
             throw new NotImplementedException();
         }
 
         public IQueryable<Posts> GetPosts()
-        {
-            return postRepository.Get.Include(t => t.CategoryDetail).Include(t=>t.Region);
-        }
-
-        public void Insert(Posts entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Posts> SearchFor(Expression<Func<Posts, bool>> predicate)
         {
             throw new NotImplementedException();
         }

@@ -23,23 +23,47 @@ namespace Infrastructure.Services
         }
 
         public IQueryable<Category> Get { get; private set; }
-
-        public void Insert(Category entity)
+        public Category Find(object[] keyValues)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Category entity)
+        public Category Find(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Category> SearchFor(Expression<Func<Category, bool>> predicate)
+        public Category Find(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Category GetById(int id)
+        public Category Add(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category Update(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category AddOrUpdate(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
         {
             throw new NotImplementedException();
         }

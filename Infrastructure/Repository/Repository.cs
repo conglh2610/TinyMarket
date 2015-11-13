@@ -21,34 +21,18 @@ namespace Infrastructure
     {
 
         protected DbSet<T> DbSet;
-        private DbContext _dataContext;
+        private readonly DbContext _context;
 
         public Repository()
         {
-            _dataContext = new DatabaseContext();
-            DbSet = _dataContext.Set<T>();
+            _context = new DatabaseContext();
+            DbSet = _context.Set<T>();
         }
 
         public Repository(DbContext context)
         {
-            this._dataContext = context;
+            this._context = context;
             DbSet = context.Set<T>();
-        }
-        #region IRepository<T> Members
-
-        public void Insert(T entity)
-        {
-            DbSet.Add(entity);
-        }
-
-        public void Delete(T entity)
-        {
-            DbSet.Remove(entity);
-        }
-
-        public IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate)
-        {
-            return DbSet.Where(predicate);
         }
 
         public IQueryable<T> Get
@@ -56,12 +40,108 @@ namespace Infrastructure
             get { return DbSet; }
         }
 
-        public T GetById(int id)
+        public IQueryable<T> GetIncluding(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = DbSet;
+            return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+        }
+
+        public T Find(object[] keyValues)
+        {
+            return DbSet.Find(keyValues);
+        }
+
+        public T Find(int id)
         {
             return DbSet.Find(id);
         }
 
-        #endregion
+        public T Find(string id)
+        {
+            return DbSet.Find(id);
+        }
+
+        public T Add(T entity)
+        {
+            try
+            {
+                DbSet.Add(entity);
+                Commit();
+                _context.Entry(entity).GetDatabaseValues();
+            }
+            catch (DbEntityValidationException)
+            {
+                //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+
+            return entity;
+        }
+
+
+        public T FindBy(T entity)
+        {
+            return DbSet.Find(entity);
+        }
+
+        public T Update(T entity)
+        {
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
+            Commit();
+            return entity;
+        }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
+        }
+
+        protected DbContext DbContext
+        {
+            [DebuggerStepThrough]
+            get
+            {
+                return _context;
+            }
+        }
+        public T AddOrUpdate(T entity)
+        {
+            //uses DbContextExtensions to check value of primary key
+            //_context.AddOrUpdate(entity);
+            Commit();
+            return entity;
+        }
+
+        public void Remove(object[] keyValues)
+        {
+            //uses DbContextExtensions to attach a stub (or the actual entity if loaded)
+            //var stub = _context.Load<T>(keyValues);
+            //DbSet.Remove(stub);
+            //Commit();
+        }
+
+        public void Remove(T entity)
+        {
+            try
+            {
+                DbSet.Remove(entity);
+                Commit();
+            }
+            catch (DbEntityValidationException)
+            {
+                //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+        }
+
+        public void Dispose(bool disposing)
+        {
+            if (_context != null)
+            {
+                _context.Dispose();
+            }
+
+            GC.SuppressFinalize(this);
+        }
 
     }
 }

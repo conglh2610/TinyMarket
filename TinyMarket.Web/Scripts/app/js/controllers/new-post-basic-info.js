@@ -3,8 +3,15 @@
         if (options.entered) {
             return callback();
         } else {
+            $scope.typesModel = 'isSelling';
             $timeout(function () {
-                $scope.$context.data.model.radioModel = 'isSelling';
+                $scope.$watchCollection('typesModel', function () {
+                    if ($scope.typesModel == "isBuying")
+                        $scope.$context.data.model.IsBuying = true;
+                    else
+                        $scope.$context.data.model.IsBuying = false;
+                });
+
                 return callback();
             }, 5);
         }
@@ -13,7 +20,14 @@
         if (options.forward) {
             $timeout(function () {
                 $scope.$context.data.imageFiles = $scope.interface.getFiles($scope.interface.FILE_TYPES.VALID);
+                if ($scope.$context.data.model.CategoryDetail.Id)
+                {
+                    $scope.$context.data.model.CategoryDetailId = $scope.$context.data.model.CategoryDetail.Id;
+                }
 
+                if ($scope.$context.data.model.Region.Id) {
+                    $scope.$context.data.model.RegionId = $scope.$context.data.model.Region.Id;
+                }
                 $scope.informationForm.$setSubmitted();
                 return callback($scope.informationForm.$valid);
             }, 5);

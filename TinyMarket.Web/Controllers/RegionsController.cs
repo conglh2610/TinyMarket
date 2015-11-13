@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services;
+﻿using System.Data.Entity;
+using Infrastructure.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,7 @@ namespace TinyMarket.Web.Controllers
         [HttpGet]
         public HttpResponseMessage GetAllRegions()
         {
-            var regions = regionService.GetRegions();
+            var regions = regionService.Get;
             return Request.CreateResponse(HttpStatusCode.OK, regions.ToList());
         }
     }

@@ -23,6 +23,51 @@ namespace Infrastructure.Services
             this.categoryDetailRepository = categoryDetailRepository;
         }
         public IQueryable<CategoryDetail> Get { get; private set; }
+        public CategoryDetail Find(object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryDetail Find(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryDetail Find(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryDetail Add(CategoryDetail entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryDetail Update(CategoryDetail entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryDetail AddOrUpdate(CategoryDetail entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(CategoryDetail entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(CategoryDetail entity)
         {
             throw new NotImplementedException();

@@ -22,6 +22,7 @@ using System.IO;
 using System.Web;
 using Newtonsoft.Json.Linq;
 using File = System.IO.File;
+using Infrastructure.Domain;
 
 namespace TinyMarket.Web.Controllers
 {
@@ -60,12 +61,7 @@ namespace TinyMarket.Web.Controllers
                 {
                     throw new HttpResponseException(HttpStatusCode.BadRequest);
                 }
-
-                var model = result.FormData["model"];
-                //TODO: Do something with the json model which is currently a string
-
-
-
+                
                 //get the files
                 foreach (var file in result.FileData)
                 {
@@ -108,6 +104,12 @@ namespace TinyMarket.Web.Controllers
                     var list = service.Files.Get(files[0].Id);
                 }
 
+
+                var model = result.FormData["model"];
+
+                Posts post = JsonConvert.DeserializeObject<Posts>(model);
+                
+                postService.Add(post);
             }
             catch (Exception e)
             {

@@ -8,19 +8,19 @@
                 <div class="form-group clearfix">
                     <label class="col-sm-4 control-label text-right">Tên: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.username}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Name}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix ">
                     <label class="col-sm-4 control-label text-right">Email: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.email}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Email}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-sm-4 control-label text-right">Số điện thoại: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.phone}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Phone}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -38,19 +38,19 @@
                 <div class="form-group clearfix">
                     <label class="col-sm-4 control-label text-right">Tiêu đề: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.title}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Title}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-sm-4 control-label text-right">Nội dung: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Contain}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Detail}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-sm-4 control-label text-right">Giá: </label>
                     <div class="col-sm-4">
-                        <label class="control-label" style="font-weight:normal">{{$context.data.model.price}}</label>
+                        <label class="control-label" style="font-weight:normal">{{$context.data.model.Price}}</label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -71,7 +71,7 @@
                 <div class="form-group clearfix">
                     <label class="col-sm-3 control-label text-right">Mật khẩu: </label>
                     <div class="col-sm-3">
-                        <input class="form-control" ng-model='$context.data.model.password' type="password" name='password' placeholder='nhập mật khẩu' required>
+                        <input class="form-control" ng-model='$context.data.model.Password' type="password" name='password' placeholder='nhập mật khẩu' required>
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="confirmForm.password.$error.required && (confirmForm.password.$dirty || confirmForm.$submitted)">Bạn chưa nhập mật khẩu</div>
@@ -80,7 +80,7 @@
                 <div class="form-group clearfix">
                     <label class="col-sm-3 control-label text-right">Nhập lại mật khẩu: </label>
                     <div class="col-sm-3">
-                        <input class="form-control" ng-model='$context.data.model.password_verify' type="password" name='confirm_password' placeholder='nhập lại mật khẩu' required verify-password="$context.data.model.password">
+                        <input class="form-control" ng-model='$context.data.model.password_verify' type="password" name='confirm_password' placeholder='nhập lại mật khẩu' required verify-password="$context.data.model.Password">
                     </div>
                     <div class="col-sm-3">
                         <div class="alert alert-danger" ng-show="confirmForm.confirm_password.$error.required && (confirmForm.confirm_password.$dirty || confirmForm.$submitted)">Nhập lại mật khẩu</div>

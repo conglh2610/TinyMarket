@@ -9,11 +9,15 @@ namespace Infrastructure
     public interface IRepository<T> where T : class
     {
         IQueryable<T> Get { get; }
-        void Insert(T entity);
-        void Delete(T entity);
-        IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate);
-        //IQueryable<T> GetAll();
-        T GetById(int id);
+        T Find(object[] keyValues);
+        T Find(int id);
+        T Find(string id);
+        T Add(T entity);
+        T Update(T entity);
+        T AddOrUpdate(T entity);
+        void Remove(object[] keyValues);
+        void Remove(T entity);
+        void Commit();
         
     }
 }

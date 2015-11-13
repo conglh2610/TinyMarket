@@ -13,7 +13,8 @@ namespace Infrastructure.Domain
     public class Posts
     {
         [Key]
-        public int Id { get; set; }        
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string PostCode { get; set; }
         public string Title { get; set; }
         public string Detail { get; set; }
@@ -22,8 +23,11 @@ namespace Infrastructure.Domain
         public decimal Price { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public bool IsBuying { get; set; }
         public Enums.Status Status { get; set; }
+        public int RegionId { get; set; }
+        [ForeignKey("RegionId")]
         public Region Region { get; set; }
         public int UserId { get; set; }
         public int CategoryDetailId { get; set; }
