@@ -15,7 +15,6 @@ namespace Infrastructure.Domain
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string PostCode { get; set; }
         public string Title { get; set; }
         public string Detail { get; set; }
         public DateTime CreateDate { get; set; }
@@ -28,11 +27,11 @@ namespace Infrastructure.Domain
         public Enums.Status Status { get; set; }
         public int RegionId { get; set; }
         [ForeignKey("RegionId")]
-        public Region Region { get; set; }
+        public virtual Region Region { get; set; }
         public int UserId { get; set; }
         public int CategoryDetailId { get; set; }
         [ForeignKey("CategoryDetailId")]
-        public CategoryDetail CategoryDetail { get; set; }
+        public virtual CategoryDetail CategoryDetail { get; set; }
 
     }
 }

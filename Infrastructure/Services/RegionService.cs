@@ -11,6 +11,7 @@ namespace Infrastructure.Services
 {
     public interface IRegionService : IRepository<Region>
     {
+        IQueryable<Region> GetRegions();
     }
     public class RegionService : IRegionService
     {
@@ -66,6 +67,10 @@ namespace Infrastructure.Services
         public void Commit()
         {
             throw new NotImplementedException();
+        }
+        public IQueryable<Region> GetRegions()
+        {
+            return regionRepository.Get;
         }
     }
 }

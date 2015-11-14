@@ -62,9 +62,9 @@
     <Compile Include="Domain\Region.cs" />
     <Compile Include="Domain\Users.cs" />
     <Compile Include="Enum\Enums.cs" />
-    <Compile Include="Migrations\201511130814313_conglh.cs" />
-    <Compile Include="Migrations\201511130814313_conglh.Designer.cs">
-      <DependentUpon>201511130814313_conglh.cs</DependentUpon>
+    <Compile Include="Migrations\201511140805327_abc.cs" />
+    <Compile Include="Migrations\201511140805327_abc.Designer.cs">
+      <DependentUpon>201511140805327_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,18 +82,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511130814313_conglh.resx">
-      <DependentUpon>201511130814313_conglh.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511140805327_abc.resx">
+      <DependentUpon>201511140805327_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

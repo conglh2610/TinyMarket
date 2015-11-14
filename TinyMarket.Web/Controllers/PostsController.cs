@@ -45,6 +45,7 @@ namespace TinyMarket.Web.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> SavePost()
         {
+            Posts post;
             if (!Request.Content.IsMimeMultipartContent())
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
@@ -96,7 +97,7 @@ namespace TinyMarket.Web.Controllers
                         "TinyMarket_Folder", "root"));
                 }
 
-                if (_Files.Count != 0)
+                if (_Files.Count != 0 && result.FileData.Count > 0)
                 {
                     string directoryId = _Files[0].Id;
 
@@ -107,9 +108,9 @@ namespace TinyMarket.Web.Controllers
 
                 var model = result.FormData["model"];
 
-                Posts post = JsonConvert.DeserializeObject<Posts>(model);
-                
+                post = JsonConvert.DeserializeObject<Posts>(model);
                 postService.Add(post);
+
             }
             catch (Exception e)
             {
@@ -129,6 +130,7 @@ namespace TinyMarket.Web.Controllers
                     }
                 }
             }
+            
             return Request.CreateResponse(HttpStatusCode.OK, files);
         }
 

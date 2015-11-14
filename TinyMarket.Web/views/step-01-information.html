@@ -52,7 +52,7 @@
                     'has-success': informationForm.$submitted && informationForm.category.$valid}">
                     <label class="col-sm-2 control-label text-right" for="category">Hạng mục: </label>
                     <div class="col-sm-6">
-                        <select class="form-control" name="category" ng-model="$context.data.model.CategoryDetail" required
+                        <select class="form-control" name="category" ng-model="$context.data.model.CategoryDetailModel" required
                                 ng-options="p.Name for p in $context.data.model.categoryDataSource">
                             <option value=""><<--chọn hạng mục-->></option>
                         </select>
@@ -66,7 +66,7 @@
                     'has-success': informationForm.$submitted && informationForm.region.$valid}">
                     <label class="col-sm-2 control-label text-right" for="region">Vùng: </label>
                     <div class="col-sm-6">
-                        <select class="form-control" name="region" ng-model="$context.data.model.Region" required
+                        <select class="form-control" name="region" ng-model="$context.data.model.RegionModel" required
                                 ng-options="p.Name for p in $context.data.model.regionDataSource">
                             <option value=""><<--chọn vùng-->></option>
                         </select>

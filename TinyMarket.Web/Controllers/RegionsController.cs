@@ -20,7 +20,7 @@ namespace TinyMarket.Web.Controllers
         [HttpGet]
         public HttpResponseMessage GetAllRegions()
         {
-            var regions = regionService.Get;
+           var regions = regionService.GetRegions();
             return Request.CreateResponse(HttpStatusCode.OK, regions.ToList());
         }
     }

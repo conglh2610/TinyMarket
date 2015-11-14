@@ -20,13 +20,13 @@
         if (options.forward) {
             $timeout(function () {
                 $scope.$context.data.imageFiles = $scope.interface.getFiles($scope.interface.FILE_TYPES.VALID);
-                if ($scope.$context.data.model.CategoryDetail.Id)
+                if ($scope.$context.data.model.CategoryDetailModel.Id)
                 {
-                    $scope.$context.data.model.CategoryDetailId = $scope.$context.data.model.CategoryDetail.Id;
+                    $scope.$context.data.model.CategoryDetailId = $scope.$context.data.model.CategoryDetailModel.Id;
                 }
 
-                if ($scope.$context.data.model.Region.Id) {
-                    $scope.$context.data.model.RegionId = $scope.$context.data.model.Region.Id;
+                if ($scope.$context.data.model.RegionModel.Id) {
+                    $scope.$context.data.model.RegionId = $scope.$context.data.model.RegionModel.Id;
                 }
                 $scope.informationForm.$setSubmitted();
                 return callback($scope.informationForm.$valid);
