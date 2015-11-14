@@ -1,5 +1,8 @@
 myApp.controller('mainController', ['$scope', 'postService', 'categoryService', '$timeout', function ($scope, postService, categoryService, $timeout) {
 
+    $('.accordion').on('show hide', function (n) {
+        $(n.target).siblings('.accordion-heading').find('.accordion-toggle i').toggleClass('icon-chevron-up icon-chevron-down');
+    });
     function makingDatasourceForDataSeach(data) {
         var result = [];
         var all = {
@@ -40,21 +43,21 @@ myApp.controller('mainController', ['$scope', 'postService', 'categoryService', 
         return result;
     }
 
-    $scope.$watch(
-                  "categoryModel",
-                  function handleFooChange(newValue, oldValue) {
-                      if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
-                          if (newValue != undefined)
-                              alert("new value: " + newValue);
-                          if (newValue != undefined)
-                              alert("old value: " + newValue);
-                      }
-                  }
-              );
+    //$scope.$watch(
+    //              "categoryDisplay",
+    //              function handleFooChange(newValue, oldValue) {
+    //                  if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
+    //                      if (newValue != undefined)
+    //                          alert("new value: " + newValue);
+    //                      if (newValue != undefined)
+    //                          alert("old value: " + newValue);
+    //                  }
+    //              }
+    //          );
 
-    $scope.webBrowsersGrouped1 = categoryService.getAllCategories().then(function (results) {
+    $scope.categoryDisplay = categoryService.getAllCategories().then(function (results) {
         var dataSource = makingDatasourceForDataSeach(results.data);
-        $scope.webBrowsersGrouped = dataSource;
+        $scope.categoryDisplay = dataSource;
     });
 
     $scope.posts = [];

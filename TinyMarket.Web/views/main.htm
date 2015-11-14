@@ -1,58 +1,70 @@
 ﻿<div class="panel-body">
+
     <div class="form-group">
         <div class="form-group clearfix">
-            <div class="col-sm-12">
-                <div isteven-multi-select
-                     input-model="webBrowsersGrouped"
-                     output-model="outputBrowsers1"
-                     button-label="icon name"
-                     item-label="icon name maker"
-                     tick-property="ticked"
-                     group-property="msGroup">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Tìm kiếm</h1>
                 </div>
-            </div>
-        </div>
-        <div ng-repeat="post in posts" class="form-group clearfix">
-            <div class="a-fixed-left-grid-inner" style="padding-left:100px">
-                <div class="a-text-center a-fixed-left-grid-col a-col-left" style="width:100px;margin-left:-100px;_margin-left:-50px;float:left;">
-                    <div class="item-view-left-col-inner">
-                        <a class="a-link-normal" href="/gp/product/B00N3XT3YA/ref=oh_aui_detailpage_o01_s00?ie=UTF8&amp;psc=1">
-                            <img alt="" src="https://images-na.ssl-images-amazon.com/images/I/414iOHnCRoL._SY90_.jpg" onload="if (typeof uet == 'function') { uet('cf');}" class="yo-critical-feature" height="90" width="90" title="Unismart Mofi Stand Slim Flip PU Leather Cover Soft Back Case Shell Compatible for OnePlus One (Black)" data-a-hires="https://images-na.ssl-images-amazon.com/images/I/414iOHnCRoL._SY180_.jpg">
-                        </a>
+                <div class="panel-body">
+                    <p>
+                        Country music is a genre of American popular...
+                    </p>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">
+                        More information...
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div uib-collapse="isCollapsed">
+                        <h1>expand section</h1>
                     </div>
                 </div>
-                <div class="a-fixed-left-grid-col a-col-right" style="padding-left:1.5%;*width:98.1%;float:left;">
-                    <div class="a-row">
-                        <a class="a-link-normal" href="#">
-                            {{post.Title}}
-                        </a>
-                    </div>
-                    <div class="a-row">
-                        <span class="a-size-small a-color-secondary">
-                            Tại:
-                            <a class="a-link-normal" href="#">
-                                {{post.Region.Name}}
-                            </a>
-                        </span>
-                    </div>
-                    <div class="a-row">
-                        <span class="a-size-small a-color-price">
-                            {{post.Price}}
-                        </span>
-                    </div>
-                    <div class="a-row">
-                        <span class="a-color-secondary a-text-bold">
-                        </span>
-                        <span class="a-color-secondary">
-                        </span>
-                    </div>
-                    <div class="a-row">
-                        <div class="a-row a-spacing-top-mini">
-
+                <div class="panel-body">
+                    <div ng-repeat="post in posts" class="form-group clearfix">
+                        <div class="s-result-item">
+                            <div class="a-fixed-left-grid-inner" style="padding-left:100px">
+                                <div class="a-text-center a-fixed-left-grid-col a-col-left" style="width:100px;margin-left:-100px;_margin-left:-50px;float:left;">
+                                    <div class="item-view-left-col-inner">
+                                        <a class="a-link-normal" href="/gp/product/B00N3XT3YA/ref=oh_aui_detailpage_o01_s00?ie=UTF8&amp;psc=1">
+                                            <img alt="" src="https://images-na.ssl-images-amazon.com/images/I/414iOHnCRoL._SY90_.jpg" onload="if (typeof uet == 'function') { uet('cf');}" class="yo-critical-feature" height="90" width="90" title="Unismart Mofi Stand Slim Flip PU Leather Cover Soft Back Case Shell Compatible for OnePlus One (Black)" data-a-hires="https://images-na.ssl-images-amazon.com/images/I/414iOHnCRoL._SY180_.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="a-fixed-left-grid-col a-col-right" style="padding-left:1.5%;*width:98.1%;float:left; margin-top: 10px;">
+                                    <div class="a-row">
+                                        <a class="a-link-normal" href="#">
+                                            {{post.Title}}
+                                        </a>
+                                    </div>
+                                    <div class="a-row">
+                                        <span class="a-size-small a-color-secondary">
+                                            Tại:
+                                            <a class="a-link-normal" href="#">
+                                                {{post.Region.Name}}
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="a-row">
+                                        <span class="a-size-small a-color-price">
+                                            {{post.Price}}
+                                        </span>
+                                    </div>
+                                    <div class="a-row">
+                                        <span class="a-color-secondary a-text-bold">
+                                        </span>
+                                        <span class="a-color-secondary">
+                                        </span>
+                                    </div>
+                                    <div class="a-row">
+                                        <div class="a-row a-spacing-top-mini">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

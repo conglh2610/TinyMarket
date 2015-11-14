@@ -41,19 +41,19 @@ myApp.controller('demoCustom', ['$scope', 'categoryService', 'serviceCommon', fu
         return result;
     }
 
-    $scope.$watch(
-                  "categoryDisplay",
-                  function handleFooChange(newValue, oldValue) {
-                      if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
-                          if (newValue != undefined)
-                              alert("new value: " + newValue);
-                          if (newValue != undefined)
-                              alert("old value: " + newValue);
-                      }
-                  }
-              );
+    //$scope.$watch(
+    //              "categoryDisplay",
+    //              function handleFooChange(newValue, oldValue) {
+    //                  if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
+    //                      if (newValue != undefined)
+    //                          alert("new value: " + newValue);
+    //                      if (newValue != undefined)
+    //                          alert("old value: " + newValue);
+    //                  }
+    //              }
+    //          );
 
-    $scope.webBrowsersGrouped1 = categoryService.getAllCategories().then(function (results) {
+    $scope.categoryDisplay = categoryService.getAllCategories().then(function (results) {
         var dataSource = makingDatasourceForDataSeach(results.data);
         $scope.webBrowsersGrouped = dataSource;
     });

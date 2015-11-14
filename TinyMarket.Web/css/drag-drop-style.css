@@ -12,7 +12,6 @@ body {
 
 body, html {
     height: 100%;
-    overflow: hidden;
 }
 
 .colourful {
@@ -23,16 +22,6 @@ body, html {
     background: -o-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* IE10+ */
     background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C */
-    /*background:
-        -webkit-linear-gradient(45deg, hsla(332, 18%, 55%, 1) 0%, hsla(332, 18%, 55%, 0) 70%),
-        -webkit-linear-gradient(315deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
-        -webkit-linear-gradient(225deg, hsla(342, 27%, 50%, 1) 10%, hsla(342, 27%, 50%, 0) 80%),
-        -webkit-linear-gradient(135deg, hsla(169, 0%, 100%, 1) 100%, hsla(169, 0%, 100%, 0) 70%);
-    background:
-        linear-gradient(45deg, hsla(332, 18%, 55%, 1) 0%, hsla(332, 18%, 55%, 0) 70%),
-        linear-gradient(135deg, hsla(290, 22%, 50%, 1) 10%, hsla(290, 22%, 50%, 0) 80%),
-        linear-gradient(225deg, hsla(342, 27%, 50%, 1) 10%, hsla(342, 27%, 50%, 0) 80%),
-        linear-gradient(315deg, hsla(169, 0%, 100%, 1) 100%, hsla(169, 0%, 100%, 0) 70%);*/
 }
 
 div.background {

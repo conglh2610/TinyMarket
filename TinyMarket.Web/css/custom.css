@@ -2,128 +2,6 @@
     outline: none;
 }
 
-.multiSelect .cx-search-container {
-    width: 700px;
-    height: 30px !important;
-    border-radius: 4px;
-    border: 1px solid gray;
-    min-width: 300px;
-    position: relative;
-    overflow: hidden;
-    display: table-cell;
-    border: 1px sandybrown solid;
-}
-
-    .multiSelect .cx-search-container .select-criteria-search {
-        float: left !important;
-        width: auto;
-        max-width: 200px;
-        border-radius: 4px 0 0 4px;
-        border: none;
-        border-right: 1px solid #CDCDCD;
-        height: 40px;
-        background: #F3F3F3;
-        cursor: pointer;
-        color: gray;
-        overflow: hidden;
-        display: table-cell;
-        width: auto;
-    }
-
-.multiSelect .cx-search-containerselect:hover {
-    background: #D5D5D5;
-}
-
-.multiSelect .cx-search-container input[type='submit']:hover {
-    background: yellow;
-    font-weight: bold;
-}
-
-/* the multiselect button */
-.multiSelect .cx-search-container .button-right {
-    position: relative;
-    text-align: center;
-    float: right;
-    cursor: pointer;
-    border: 1px solid #c6c6c6;
-    padding: 1px 8px 1px 8px;
-    font-size: 14px;
-    min-height: 38px !important;
-    border-radius: 4px;
-    color: #555;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    white-space: normal;
-    background-color: #fff;
-    background-image: linear-gradient(#fff, #f7f7f7);
-    height: 100%;
-    margin: 0;
-    padding: 0 5px;
-    border: none;
-    border-left: 1px solid #CDCDCD;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    display: table-cell;
-    width: auto;
-}
-
-.multiSelect .cx-search-container .button-left {
-    position: relative;
-    text-align: center;
-    float: left;
-    cursor: pointer;
-    border: 1px solid #c6c6c6;
-    padding: 1px 8px 1px 8px;
-    font-size: 14px;
-    min-height: 38px !important;
-    border-radius: 4px;
-    max-width: 300px !important;
-    color: #555;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    white-space: normal;
-    background-color: #fff;
-    background-image: linear-gradient(#fff, #f7f7f7);
-    height: 100%;
-    margin: 0;
-    padding: 0 5px;
-    border: none;
-    border-right: 1px solid #CDCDCD;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    display: table-cell;
-    width: auto;
-}
-
-.multiSelect .cx-search-container .search-text-div .text-search {
-    width: 100%;
-    border: none !important;
-    display: block;
-}
-
-.cx-search-container .search-drd-div, .cx-search-container .search-text-div, .cx-search-container .search-btn-div {
-    display: table-cell;
-    width: auto;
-}
-
-.cx-search-container .search-btn-div {
-    white-space: nowrap;
-}
-
-.cx-search-container .search-text-div {
-    width: 100%;
-    height: 100%;
-}
 /*-------------------------cho xep----------------------------*/
 
 .aok-clearfix, .clearfix {
@@ -2365,13 +2243,16 @@ td.a-span1, td.a-span10, td.a-span11, td.a-span12, td.a-span2, td.a-span3, td.a-
             content: "";
             line-height: 0;
             font-size: 0;
+   
         }
 
         .a-fixed-left-grid .a-fixed-left-grid-inner:after {
             clear: both;
+     
         }
 
     .a-fixed-left-grid .a-fixed-left-grid-col {
+        margin-top: 5px;
         position: relative;
         overflow: visible;
         zoom: 1;
@@ -5226,13 +5107,13 @@ table.a-keyvalue td, table.a-keyvalue th {
     color: #949494;
 }*/
 
-    /*ul li {
+/*ul li {
         list-style: disc;
     }*/
 
-    ul ul li {
-        list-style: circle;
-    }
+ul ul li {
+    list-style: circle;
+}
 
 ol {
     margin: 0 0 18px 20px;
@@ -7321,142 +7202,199 @@ ol.a-carousel {
 /*---------------------------------------------------------------------------*/
 
 .fuelux .wizard {
-  background-color: #f9f9f9;
-  border: 1px solid #d4d4d4;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  *zoom: 1;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    background-color: #f9f9f9;
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    *zoom: 1;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
 
-.fuelux .wizard:before,
-.fuelux .wizard:after {
-  display: table;
-  line-height: 0;
-  content: "";
+    .fuelux .wizard:before,
+    .fuelux .wizard:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+
+    .fuelux .wizard:after {
+        clear: both;
+    }
+
+    .fuelux .wizard ul {
+        padding: 0;
+        margin: 0;
+        list-style: none outside none;
+    }
+
+        .fuelux .wizard ul li {
+            position: relative;
+            float: left;
+            height: 46px;
+            padding: 0 5px 0 20px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 46px !important;
+            color: #999999;
+            cursor: default;
+            background: #ededed;
+        }
+
+            .fuelux .wizard ul li .chevron {
+                position: absolute;
+                top: 0;
+                right: -14px;
+                display: block;
+                border: 24px solid transparent;
+                border-right: 0;
+                border-left: 14px solid #d4d4d4;
+            }
+
+                .fuelux .wizard ul li .chevron:before {
+                    position: absolute;
+                    top: -24px;
+                    right: 1px;
+                    display: block;
+                    border: 24px solid transparent;
+                    border-right: 0;
+                    border-left: 14px solid #ededed;
+                    content: "";
+                }
+
+            .fuelux .wizard ul li.complete {
+                color: #468847;
+                background: #f3f4f5;
+            }
+
+                .fuelux .wizard ul li.complete:hover {
+                    cursor: pointer;
+                    background: #e7eff8;
+                }
+
+                    .fuelux .wizard ul li.complete:hover .chevron:before {
+                        border-left: 14px solid #e7eff8;
+                    }
+
+                .fuelux .wizard ul li.complete .chevron:before {
+                    border-left: 14px solid #f3f4f5;
+                }
+
+            .fuelux .wizard ul li.active {
+                color: #3a87ad;
+                background: #f1f6fc;
+            }
+
+                .fuelux .wizard ul li.active .chevron:before {
+                    border-left: 14px solid #f1f6fc;
+                }
+
+            .fuelux .wizard ul li .badge {
+                margin-right: 8px;
+            }
+
+            .fuelux .wizard ul li:nth-child(1) {
+                z-index: 10;
+                padding-left: 20px;
+                border-radius: 4px 0 0 4px;
+            }
+
+            .fuelux .wizard ul li:nth-child(2) {
+                z-index: 9;
+            }
+
+            .fuelux .wizard ul li:nth-child(3) {
+                z-index: 8;
+            }
+
+            .fuelux .wizard ul li:nth-child(4) {
+                z-index: 7;
+            }
+
+            .fuelux .wizard ul li:nth-child(5) {
+                z-index: 6;
+            }
+
+            .fuelux .wizard ul li:nth-child(6) {
+                z-index: 5;
+            }
+
+            .fuelux .wizard ul li:nth-child(7) {
+                z-index: 4;
+            }
+
+            .fuelux .wizard ul li:nth-child(8) {
+                z-index: 3;
+            }
+
+            .fuelux .wizard ul li:nth-child(9) {
+                z-index: 2;
+            }
+
+            .fuelux .wizard ul li:nth-child(10) {
+                z-index: 1;
+            }
+
+    .fuelux .wizard .actions {
+        float: right;
+        padding-right: 15px;
+        line-height: 44px;
+        vertical-align: middle;
+    }
+
+        .fuelux .wizard .actions a {
+            margin-right: 8px;
+            font-size: 12px;
+            line-height: 45px;
+        }
+
+        .fuelux .wizard .actions .btn-prev i {
+            margin-right: 5px;
+        }
+
+        .fuelux .wizard .actions .btn-next i {
+            margin-left: 5px;
+        }
+
+.fuelux .step-content {
+    padding: 5px 0px 0px 0px !important;
+    height: auto !important;
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative !important;
+    background-color: transparent !important;
 }
 
-.fuelux .wizard:after {  clear: both;}
+    .fuelux .step-content .step-pane {
+        display: none;
+        padding: 0px 20px;
+    }
 
-.fuelux .wizard ul {
-  padding: 0;
-  margin: 0;
-  list-style: none outside none;
+.fuelux .bottom-prev-next {
+    padding: 5px 20px;
 }
 
-.fuelux .wizard ul li {
-  position: relative;
-  float: left;
-  height: 46px;
-  padding: 0 5px 0 20px;
-  margin: 0;
-  font-size: 16px;
-  line-height: 46px !important;
-  color: #999999;
-  cursor: default;
-  background: #ededed;
+    .fuelux .bottom-prev-next button {
+        margin-left: 2px;
+    }
+
+.fuelux .step-content .active {
+    display: block;
 }
 
-.fuelux .wizard ul li .chevron {
-  position: absolute;
-  top: 0;
-  right: -14px;
-  display: block;
-  border: 24px solid transparent;
-  border-right: 0;
-  border-left: 14px solid #d4d4d4;
+    .fuelux .step-content .active .btn-group .active {
+        display: inline-block;
+    }
+
+.badge-info {
+    background-color: #3A87AD;
 }
 
-.fuelux .wizard ul li .chevron:before {
-  position: absolute;
-  top: -24px;
-  right: 1px;
-  display: block;
-  border: 24px solid transparent;
-  border-right: 0;
-  border-left: 14px solid #ededed;
-  content: "";
+.badge-success {
+    background-color: #468847;
 }
-
-.fuelux .wizard ul li.complete {
-  color: #468847;
-  background: #f3f4f5;
-}
-
-.fuelux .wizard ul li.complete:hover {
-  cursor: pointer;
-  background: #e7eff8;
-}
-
-.fuelux .wizard ul li.complete:hover .chevron:before {  border-left: 14px solid #e7eff8;}
-
-.fuelux .wizard ul li.complete .chevron:before {  border-left: 14px solid #f3f4f5;}
-
-.fuelux .wizard ul li.active {
-  color: #3a87ad;
-  background: #f1f6fc;
-}
-
-.fuelux .wizard ul li.active .chevron:before {  border-left: 14px solid #f1f6fc;}
-
-.fuelux .wizard ul li .badge {  margin-right: 8px;}
-
-.fuelux .wizard ul li:nth-child(1) {
-  z-index: 10;
-  padding-left: 20px;
-  border-radius: 4px 0 0 4px;
-}
-
-.fuelux .wizard ul li:nth-child(2) {  z-index: 9;}
-.fuelux .wizard ul li:nth-child(3) {  z-index: 8;}
-.fuelux .wizard ul li:nth-child(4) {  z-index: 7;}
-.fuelux .wizard ul li:nth-child(5) {  z-index: 6;}
-.fuelux .wizard ul li:nth-child(6) {  z-index: 5;}
-.fuelux .wizard ul li:nth-child(7) {  z-index: 4;}
-.fuelux .wizard ul li:nth-child(8) {  z-index: 3;}
-.fuelux .wizard ul li:nth-child(9) {  z-index: 2;}
-.fuelux .wizard ul li:nth-child(10) {  z-index: 1;}
-
-.fuelux .wizard .actions {
-  float: right;
-  padding-right: 15px;
-  line-height: 44px;
-  vertical-align: middle;
-}
-
-.fuelux .wizard .actions a {
-  margin-right: 8px;
-  font-size: 12px;
-  line-height: 45px;
-}
-
-.fuelux .wizard .actions .btn-prev i {  margin-right: 5px;}
-
-.fuelux .wizard .actions .btn-next i {  margin-left: 5px;}
-
-.fuelux .step-content{
-  padding: 5px 0px 0px 0px !important;
-  height: auto !important;
-  overflow: auto;
-  overflow-x: hidden;
-  position: relative !important;
-  background-color: transparent !important;
-}
-.fuelux .step-content .step-pane {
-  display: none;
-  padding: 0px 20px;
-}
-.fuelux .bottom-prev-next{  padding: 5px 20px;}
-.fuelux .bottom-prev-next button{  margin-left: 2px;}
-
-.fuelux .step-content .active {  display: block;}
-
-.fuelux .step-content .active .btn-group .active {  display: inline-block;}
-.badge-info{background-color: #3A87AD;}
-.badge-success{background-color: #468847;}
 
 
 div[dropzone] {
@@ -7467,4 +7405,8 @@ div[dropzone] {
     font: 20pt bold;
     color: #bbb;
     margin-bottom: 20px;
+}
+
+.s-result-item{
+    border-top: 1px solid #dddddd;
 }
