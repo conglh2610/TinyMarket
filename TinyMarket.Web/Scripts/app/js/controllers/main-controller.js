@@ -1,5 +1,4 @@
-
-myApp.controller('demoCustom', ['$scope', 'categoryService', 'serviceCommon', function ($scope, categoryService, serviceCommon) {
+myApp.controller('mainController', ['$scope', 'postService', 'categoryService', '$timeout', function ($scope, postService, categoryService, $timeout) {
 
     function makingDatasourceForDataSeach(data) {
         var result = [];
@@ -42,7 +41,7 @@ myApp.controller('demoCustom', ['$scope', 'categoryService', 'serviceCommon', fu
     }
 
     $scope.$watch(
-                  "categoryDisplay",
+                  "categoryModel",
                   function handleFooChange(newValue, oldValue) {
                       if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
                           if (newValue != undefined)
@@ -58,5 +57,15 @@ myApp.controller('demoCustom', ['$scope', 'categoryService', 'serviceCommon', fu
         $scope.webBrowsersGrouped = dataSource;
     });
 
-
+    $scope.posts = [];
+    var searchPosts = function () {
+        postService.searchPosts()
+            .then(function (results) {
+                $scope.posts = results.data;
+            });
+    };
+    searchPosts();
 }]);
+
+
+

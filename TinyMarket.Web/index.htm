@@ -11,6 +11,7 @@
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
     <link href="css/drag-drop-style.css" rel="stylesheet" />
     <link href="css/custom-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/isteven-multi-select.css">
     <!--<link href="css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/simple-sidebar.css">
     <link rel="stylesheet" href="css/style.css">
@@ -19,7 +20,7 @@
     <link href="css/drag-drop-style.css" rel="stylesheet" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Slab:400,700' type='text/css'>-->
-    <!--<link href="css/custom.css" rel="stylesheet" />-->
+    <link href="css/custom.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,7 +37,6 @@
     <script src="Scripts/app/js/libs/paypal-button.min.js"></script>
     <script src="Scripts/app/js/app.js"></script>
     <script src="Scripts/app/js/libs/helper.js"></script>
-    <script src="Scripts/app/js/controllers/demo-minimum.js"></script>
     <script src="Scripts/app/js/controllers/demo-custom.js"></script>
     <script src="Scripts/app/js/services/demo-custom-service.js"></script>
     <script src="Scripts/app/js/libs/common-logic-code.js"></script>
@@ -50,7 +50,8 @@
     <script src="Scripts/app/js/controllers/new-post-basic-info.js"></script>
     <script src="Scripts/app/js/controllers/new-post-confirm.js"></script>
     <script src="Scripts/app/js/controllers/new-post-finish.js"></script>
-
+    <script src="Scripts/app/js/services/post-service.js"></script>
+    <script src="Scripts/app/js/controllers/main-controller.js"></script>
 
 
     <script>
@@ -72,7 +73,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/main">
-                <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs" />
+                <img alt="Chợ xép Logo" src="img/logo20.png" class="hidden-xs" />
                 <span>Chợ xép 24/7</span>
             </a>
             <!-- user dropdown starts -->
@@ -190,7 +191,7 @@
             </div>
             <!--/span-->
             <!-- left menu ends -->
-            <div id="page-content-wrapper">
+            <div class="col-sm-2 col-lg-8"  id="page-content-wrapper">
                 <div class="container-fluid removePadding" ng-view></div>
             </div>
         </div>

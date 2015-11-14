@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.Criteria;
 using Infrastructure.Domain;
 
 namespace Infrastructure.Services
@@ -12,6 +13,7 @@ namespace Infrastructure.Services
     public interface IPostService : IRepository<Posts>
     {
         IQueryable<Posts> GetPosts();
+        IQueryable<Posts> SearchPost(PostCriteria criteria, ref int totalRecords);
     }
     public class PostService : IPostService
     {
@@ -80,6 +82,18 @@ namespace Infrastructure.Services
         public IQueryable<Posts> GetPosts()
         {
             throw new NotImplementedException();
+        }
+
+        public IQueryable<Posts> SearchPost(PostCriteria criteria, ref int totalRecords)
+        {
+            var query = postRepository.Get
+                .Include(t => t.CategoryDetail)
+                .Include(t => t.Region).AsQueryable();
+            // .Where(t=>(string.IsNullOrEmpty(criteria.SearchText))
+
+            totalRecords = query.Count();
+            return query;
+            
         }
     }
 }

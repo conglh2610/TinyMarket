@@ -11,7 +11,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.when('/main', {
         templateUrl: 'views/main.htm',
-        controller: 'demoMinimum'
+        controller: 'mainController'
     });
 
     $routeProvider.when('/getting-started', {

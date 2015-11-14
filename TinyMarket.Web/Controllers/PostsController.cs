@@ -23,23 +23,18 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using File = System.IO.File;
 using Infrastructure.Domain;
+using Infrastructure.Criteria;
 
 namespace TinyMarket.Web.Controllers
 {
     public class PostsController : ApiController
     {
+        private object criteria;
         private readonly IPostService postService = null;
 
         public PostsController(IPostService postService)
         {
             this.postService = postService;
-        }
-
-        [HttpGet]
-        public HttpResponseMessage GetAllPosts()
-        {
-            var posts = postService.GetPosts();
-            return Request.CreateResponse(HttpStatusCode.OK, posts.ToList());
         }
 
         [HttpPost]
@@ -131,7 +126,25 @@ namespace TinyMarket.Web.Controllers
                 }
             }
             
-            return Request.CreateResponse(HttpStatusCode.OK, files);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage SearchPosts()
+        {
+            IQueryable <Posts> result = null;
+            int totalRecords = 0;
+            try
+            {
+                PostCriteria criteria = null;
+                 result = postService.SearchPost(criteria, ref totalRecords);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
 

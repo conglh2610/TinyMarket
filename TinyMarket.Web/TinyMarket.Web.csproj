@@ -252,6 +252,7 @@
     <Content Include="highlight\styles\vs.css" />
     <Content Include="highlight\styles\xcode.css" />
     <Content Include="highlight\styles\zenburn.css" />
+    <Content Include="img\logo20.png" />
     <Content Include="index.htm" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -293,7 +294,7 @@
     <Content Include="Scripts\app\js\controllers\demo-custom.js" />
     <Content Include="Scripts\app\js\controllers\demo-grouping.js" />
     <Content Include="Scripts\app\js\controllers\demo-horizontal-layout.js" />
-    <Content Include="Scripts\app\js\controllers\demo-minimum.js" />
+    <Content Include="Scripts\app\js\controllers\main-controller.js" />
     <Content Include="Scripts\app\js\controllers\demo-single-selection-mode.js" />
     <Content Include="Scripts\app\js\controllers\new-post.js" />
     <Content Include="Scripts\app\js\libs\angular-route.js" />
@@ -319,6 +320,7 @@
     <Content Include="Scripts\app\js\libs\sx-wizard-tpls.js" />
     <Content Include="Scripts\app\js\libs\sx-wizard.js" />
     <Content Include="Scripts\app\js\libs\ui-bootstrap-tpls-0.12.0.min.js" />
+    <Content Include="Scripts\app\js\services\post-service.js" />
     <Content Include="Scripts\app\js\services\region-service.js" />
     <Content Include="Scripts\app\js\services\demo-custom-service.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1163,7 +1165,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

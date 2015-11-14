@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Constant.cs" />
     <Compile Include="Constants\Constans.cs" />
+    <Compile Include="Criteria\BaseCriteria.cs" />
+    <Compile Include="Criteria\PostCriteria.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\CategoryDetail.cs" />
     <Compile Include="Domain\Photos.cs" />
