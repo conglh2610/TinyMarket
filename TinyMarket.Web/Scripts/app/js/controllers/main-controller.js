@@ -1,8 +1,29 @@
-myApp.controller('mainController', ['$scope', 'postService', 'categoryService', '$timeout', function ($scope, postService, categoryService, $timeout) {
+﻿myApp.controller('mainController', ['$scope', 'postService', 'regionService', 'categoryService', '$timeout', function ($scope, postService, regionService, categoryService, $timeout) {
 
-    $('.accordion').on('show hide', function (n) {
-        $(n.target).siblings('.accordion-heading').find('.accordion-toggle i').toggleClass('icon-chevron-up icon-chevron-down');
-    });
+    $scope.fromDate = '';
+
+    $scope.submit = function () {
+        var dt = new Date($scope.fromDate);
+        alert(dt);
+    }
+    $scope.moreCriteria = "Thêm điều kiện tìm kiếm";
+    $scope.collapseExpand = function () {
+
+        if (!$scope.isCollapsed) {
+            $scope.isCollapsed = true;
+            $("#linkCollapse").removeClass();
+            $("#linkCollapse").addClass("glyphicon glyphicon-chevron-down");
+            $scope.moreCriteria = "Thêm điều kiện tìm kiếm";
+        }
+
+        else {
+            $scope.isCollapsed = false;
+            $("#linkCollapse").removeClass();
+            $("#linkCollapse").addClass("glyphicon glyphicon-chevron-up");
+            $scope.moreCriteria = "Tìm kiếm cơ bản";
+        }
+    }
+    $scope.isCollapsed = true;
     function makingDatasourceForDataSeach(data) {
         var result = [];
         var all = {
@@ -43,17 +64,12 @@ myApp.controller('mainController', ['$scope', 'postService', 'categoryService', 
         return result;
     }
 
-    //$scope.$watch(
-    //              "categoryDisplay",
-    //              function handleFooChange(newValue, oldValue) {
-    //                  if ((newValue != undefined || oldValue != undefined) && newValue != oldValue) {
-    //                      if (newValue != undefined)
-    //                          alert("new value: " + newValue);
-    //                      if (newValue != undefined)
-    //                          alert("old value: " + newValue);
-    //                  }
-    //              }
-    //          );
+    var getAllRegions = function () {
+        regionService.getAllRegions().then(function (results) {
+            $scope.regionDataSource = results.data;
+        });
+    }
+    getAllRegions();
 
     $scope.categoryDisplay = categoryService.getAllCategories().then(function (results) {
         var dataSource = makingDatasourceForDataSeach(results.data);
@@ -70,5 +86,24 @@ myApp.controller('mainController', ['$scope', 'postService', 'categoryService', 
     searchPosts();
 }]);
 
+
+var dateTimePicker = function () {
+    return {
+        restrict: "A",
+        require: "ngModel",
+        link: function (scope, element, attrs, ngModelCtrl) {
+            var parent = $(element).parent();
+            var dtp = parent.datetimepicker({
+                format: "LL",
+                showTodayButton: true
+            });
+            dtp.on("dp.change", function (e) {
+                ngModelCtrl.$setViewValue(moment(e.date).format("LL"));
+                scope.$apply();
+            });
+        }
+    };
+};
+myApp.directive('dateTimePicker', dateTimePicker);
 
 

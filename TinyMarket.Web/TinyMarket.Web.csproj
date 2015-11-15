@@ -193,6 +193,7 @@
   <ItemGroup>
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="css\bootstrap-cerulean.min.css" />
+    <Content Include="css\bootstrap-datetimepicker.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\charisma-app.css" />
     <Content Include="css\custom-style.css" />
@@ -305,12 +306,14 @@
     <Content Include="Scripts\app\js\libs\angular.js" />
     <Content Include="Scripts\app\js\libs\angular.min.js" />
     <Content Include="Scripts\app\js\libs\bootstrap-colorpicker-module.js" />
+    <Content Include="Scripts\app\js\libs\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\app\js\libs\bootstrap.min.js" />
     <Content Include="Scripts\app\js\libs\common-logic-code.js" />
     <Content Include="Scripts\app\js\libs\helper.js" />
     <Content Include="Scripts\app\js\libs\isteven-multi-select.js" />
     <Content Include="Scripts\app\js\libs\jquery-2.1.4.js" />
     <Content Include="Scripts\app\js\libs\jquery.min.js" />
+    <Content Include="Scripts\app\js\libs\moment.js" />
     <Content Include="Scripts\app\js\libs\ng-droplet.js" />
     <Content Include="Scripts\app\js\libs\ng-droplet.min.js" />
     <Content Include="Scripts\app\js\libs\ngDroplet.js" />

@@ -18,4 +18,23 @@ myApp.service('categoryService', ['$http', '$q', function ($http, $q) {
 
         return deferred.promise;
     };
+
+    this.categoryAddAndDisableParent = function (categoryData) {
+        var result = [];
+        var categoryId = 0;
+        for (var i = 0; i < categoryData.length; i++) {
+            if (categoryId != categoryData[i].CategoryId) {
+                var newParent = { Id: 0, Name: '--' + categoryData[i].Category.Name + '--', IsDisabled: true }
+                result.push(newParent);
+                categoryId = categoryData[i].CategoryId;
+            }
+
+            else {
+                var newChild = { Id: categoryData[i].Id, Name: categoryData[i].Name, IsDisabled: false }
+                result.push(newChild);
+            }
+        }
+
+        return result;
+    }
 }]);

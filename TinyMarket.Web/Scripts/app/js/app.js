@@ -1,6 +1,7 @@
 ﻿'use strict';
 
 var myApp = angular.module('myApp', [
+    'ngAnimate',
     'ngRoute',
     'ui.bootstrap',
     'sx.wizard',
@@ -100,32 +101,9 @@ myApp.controller('appController', ['$scope', 'serviceCommon', 'regionService', '
 
                               var getAllCategories = function () {
                                   categoryService.getAllCategories().then(function (results) {
-                                          $scope.data.model.categoryDataSource = categoryAddAndDisableParent(results.data);
+                                      $scope.data.model.categoryDataSource = categoryService.categoryAddAndDisableParent(results.data);
                                   });
                               }
-
-                              getAllRegions();
-                              getAllCategories();
-
-                              var categoryAddAndDisableParent = function (categoryData) {
-                                  var result = [];
-                                  var categoryId = 0;
-                                  for (var i = 0; i < categoryData.length; i++) {
-                                      if (categoryId != categoryData[i].CategoryId) {
-                                          var newParent = { Id: 0, Name: '--' + categoryData[i].Category.Name + '--', IsDisabled: true }
-                                          result.push(newParent);
-                                          categoryId = categoryData[i].CategoryId;
-                                      }
-
-                                      else {
-                                          var newChild = { Id: categoryData[i].Id, Name: categoryData[i].Name, IsDisabled: false }
-                                          result.push(newChild);
-                                      }
-                                  }
-
-                                  return result;
-                              }
-
 
                               $scope.interface = {};
                               $scope.uploadCount = 0;

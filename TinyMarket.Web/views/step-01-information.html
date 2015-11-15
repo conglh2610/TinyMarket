@@ -53,7 +53,8 @@
                     <label class="col-sm-2 control-label text-right" for="category">Hạng mục: </label>
                     <div class="col-sm-6">
                         <select class="form-control" name="category" ng-model="$context.data.model.CategoryDetailModel" required
-                                ng-options="p.Name for p in $context.data.model.categoryDataSource">
+                                ng-options="p.Name for p in $context.data.model.categoryDataSource"
+                                sg-options-disabled="t.IsDisabled == true for t in $context.data.model.categoryDataSource">
                             <option value=""><<--chọn hạng mục-->></option>
                         </select>
                     </div>

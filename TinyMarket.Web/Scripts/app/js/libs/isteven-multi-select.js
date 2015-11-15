@@ -89,8 +89,6 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                 filter: true
             };
 
-            $scope.inputText = { criteriaText: '' };
-
             var
                 prevTabIndex = 0,
                 helperItems = [],
@@ -100,8 +98,7 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                 selectedItems = [],
                 formElements = [],
                 vMinSearchLength = 0,
-                clickedItem = null,
-                outPutModelCategories = []
+                clickedItem = null
 
             // v3.0.0
             // clear button clicked
@@ -467,21 +464,10 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                 }
             }
 
-            // CongLH method
-            $scope.criteriaSearch = function (e) {
-                var categories = outPutModelCategories;
-                var text = $scope.inputText.criteriaText;
-                $scope.outputModel = [];
-                $scope.outputModel.push(categories);
-                $scope.outputModel.push(text);
-            }
-
-            // End
-
-            // update outPutModelCategories
+            // update $scope.outputModel
             $scope.refreshOutputModel = function () {
 
-                outPutModelCategories = [];
+                $scope.outputModel = [];
                 var
                     outputProps = [],
                     tempObj = {};
@@ -501,9 +487,9 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                                     tempObj[key1] = value1;
                                 }
                             });
-                            var index = outPutModelCategories.push(tempObj);
-                            delete outPutModelCategories[index - 1][$scope.indexProperty];
-                            delete outPutModelCategories[index - 1][$scope.spacingProperty];
+                            var index = $scope.outputModel.push(tempObj);
+                            delete $scope.outputModel[index - 1][$scope.indexProperty];
+                            delete $scope.outputModel[index - 1][$scope.spacingProperty];
                         }
                     });
                 }
@@ -515,9 +501,9 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                             && value[$scope.tickProperty] === true
                         ) {
                             var temp = angular.copy(value);
-                            var index = outPutModelCategories.push(temp);
-                            delete outPutModelCategories[index - 1][$scope.indexProperty];
-                            delete outPutModelCategories[index - 1][$scope.spacingProperty];
+                            var index = $scope.outputModel.push(temp);
+                            delete $scope.outputModel[index - 1][$scope.indexProperty];
+                            delete $scope.outputModel[index - 1][$scope.spacingProperty];
                         }
                     });
                 }
@@ -530,18 +516,18 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                 var ctr = 0;
 
                 // refresh button label...
-                if (outPutModelCategories.length === 0) {
+                if ($scope.outputModel.length === 0) {
                     // https://github.com/isteven/angular-multi-select/pull/19                    
                     $scope.varButtonLabel = $scope.lang.nothingSelected;
                 }
                 else {
-                    var tempMaxLabels = outPutModelCategories.length;
+                    var tempMaxLabels = $scope.outputModel.length;
                     if (typeof attrs.maxLabels !== 'undefined' && attrs.maxLabels !== '') {
                         tempMaxLabels = attrs.maxLabels;
                     }
 
                     // if max amount of labels displayed..
-                    if (outPutModelCategories.length > tempMaxLabels) {
+                    if ($scope.outputModel.length > tempMaxLabels) {
                         $scope.more = true;
                     }
                     else {
@@ -562,7 +548,7 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
                         if (tempMaxLabels > 0) {
                             $scope.varButtonLabel += ', ... ';
                         }
-                        $scope.varButtonLabel += '(' + outPutModelCategories.length + ')';
+                        $scope.varButtonLabel += '(' + $scope.outputModel.length + ')';
                     }
                 }
                 $scope.varButtonLabel = $sce.trustAsHtml($scope.varButtonLabel + '<span class="caret"></span>');
@@ -607,6 +593,7 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
 
             // UI operations to show/hide checkboxes based on click event..
             $scope.toggleCheckboxes = function (e) {
+
                 // We grab the button
                 var clickedEl = element.children()[0];
 
@@ -697,6 +684,7 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
 
             // handle clicks outside the button / multi select layer
             $scope.externalClickListener = function (e) {
+
                 var targetsArr = element.find(e.target.tagName);
                 for (var i = 0; i < targetsArr.length; i++) {
                     if (e.target == targetsArr[i]) {
@@ -1037,26 +1025,14 @@ angular.module('isteven-multi-select', ['ng']).directive('istevenMultiSelect', [
     }
 }]).run(['$templateCache', function ($templateCache) {
     var template =
-        '<span class="multiSelect">' +
-             // CongLH Begin
-            '<div class = "cx-search-container">' +
-                // main button
-                '<div class="search-drd-div">' +
-                    '<button id="{{directiveId}}" class="button-left" type="button"' +
-                        'ng-click="toggleCheckboxes( $event ); refreshSelectedItems(); refreshButton(); prepareGrouping; prepareIndex();"' +
-                        'ng-bind-html="varButtonLabel"' +
-                        'ng-disabled="disable-button">' +
-                    '</button>' +
-                '</div> ' +
-                '<div class="search-text-div">' +
-                    // textfield                
-                    '<input class="text-search" ng-model="inputText.criteriaText" style="height:38px !important;" ng-if="helperStatus.filter" type="text"/>' +
-                '</div> ' +
-                '<div class="search-btn-div">' +
-                    '<button type="button" class="button-right" ng-click="criteriaSearch( $event );"> Search </button>' +
-                '</div> ' +
-            '</div> ' +
-            // CongLH End
+        '<span class="multiSelect inlineBlock">' +
+            // main button
+            '<button id="{{directiveId}}" type="button"' +
+                'ng-click="toggleCheckboxes( $event ); refreshSelectedItems(); refreshButton(); prepareGrouping; prepareIndex();"' +
+                'ng-bind-html="varButtonLabel" class="form-control"' +
+                'ng-disabled="disable-button"' +
+            '>' +
+            '</button>' +
             // overlay layer
             '<div class="checkboxLayer">' +
                 // container of the helper elements
