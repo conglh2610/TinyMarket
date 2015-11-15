@@ -10,7 +10,7 @@
                         <div class="col-xs-3 padding-left-10">
                             <div isteven-multi-select
                                  input-model="categoryDisplay"
-                                 output-model="outputBrowsers1"
+                                 output-model="categoryOutPut"
                                  button-label="icon name"
                                  item-label="icon name maker"
                                  tick-property="ticked"
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="col-xs-3 padding-left-5">
-                            <select class="form-control" name="region" ng-model="$context.data.model.RegionModel" required
+                            <select class="form-control" name="region" ng-model="RegionModel" required
                                     ng-options="p.Name for p in regionDataSource">
                                 <option value=""><<--chọn vùng-->></option>
                             </select>
@@ -27,7 +27,7 @@
                             <div class="input-group">
                                 <input placeholder="Tìm kiếm" class="search-query form-control col-md-10" name="query" type="text">
                                 <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-search"></i>
+                                    <i ng-click="error()" class="glyphicon glyphicon-search"></i>
                                 </span>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                             <div class="col-xs-3 padding-left-5">
                                 <div class="form-group">
                                     <div class='input-group date'>
-                                        <input type='text' placeholder="Đến ngày" class="form-control" ng-model="toDate" data-date-time-picker />
+                                        <input type='text' placeholder="Đến ngày" class="form-control" ng-model="toDate" date-time-picker />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -130,4 +130,27 @@
     </div>
 
 </div>
+<div id="alert-error" class="alert-modal" ng-controller="AlertModalCtrl" ng-init="init('error')">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 alert-modal-box animated zoomIn">
+                <div class="alert-modal-box-header">
+                    <button type="button" class="close" ng-click="close()">×</button>
+                    <h1 class="danger"><i class="fa fa-warning"></i>{{ alert.title || '' }}</h1>
+                </div>
+                <div class="alert-modal-box-body">
+                    <div class="row">
+                        <span ng-bind="alert.message"></span>
+                    </div>
+                </div>
+                <div class="alert-modal-box-footer">
+                    <div class="text-center">
+                        <a class="btn btn-sm btn-danger" ng-click="ok()">
+                            {{ alert.button && alert.button.ok ? alert.button.ok : 'OK' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

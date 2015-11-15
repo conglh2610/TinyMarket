@@ -8,7 +8,7 @@ namespace Infrastructure.Criteria
 {
     public class PostCriteria : BaseCriteria
     {
-        public int CategoryDetailId { get; set; }
+        public string CategoryStringIds { get; set; }
         public int RegionId { get; set; }
         public int SearchText { get; set; }
         public int IsBuying { get; set; }

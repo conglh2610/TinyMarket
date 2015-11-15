@@ -6,7 +6,8 @@ var myApp = angular.module('myApp', [
     'ui.bootstrap',
     'sx.wizard',
     'isteven-multi-select',
-    'ngDroplet'
+    'ngDroplet',
+    'com.devnup.alert'
 ]);
 myApp.config(['$routeProvider', function ($routeProvider) {
 

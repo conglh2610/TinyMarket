@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="css\angular-modal-alerts.css" />
     <Content Include="css\bootstrap-cerulean.min.css" />
     <Content Include="css\bootstrap-datetimepicker.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -253,6 +254,7 @@
     <Content Include="highlight\styles\vs.css" />
     <Content Include="highlight\styles\xcode.css" />
     <Content Include="highlight\styles\zenburn.css" />
+    <Content Include="img\icon_search.png" />
     <Content Include="img\logo20.png" />
     <Content Include="index.htm" />
     <Content Include="Scripts\angular-animate.js" />
@@ -298,6 +300,7 @@
     <Content Include="Scripts\app\js\controllers\main-controller.js" />
     <Content Include="Scripts\app\js\controllers\demo-single-selection-mode.js" />
     <Content Include="Scripts\app\js\controllers\new-post.js" />
+    <Content Include="Scripts\app\js\libs\angular-modal-alerts.js" />
     <Content Include="Scripts\app\js\libs\angular-route.js" />
     <Content Include="Scripts\app\js\libs\angular-route.min.js" />
     <Content Include="Scripts\app\js\libs\angular-ui-bootstrap.js" />
